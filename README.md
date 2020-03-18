@@ -108,6 +108,8 @@ add_index: [:user_id, :item_id]
 |condition|string|null: :false|
 |wait|string|null: :false|
 |postage|integer|null: :false|
+|category_id|integer|null: :false, foregin_key: :true|
+|brand_id|integer|null: :false, foregin_key: :true|
 
 ## Association
 belongs_to :user
