@@ -83,19 +83,6 @@ belongs_to :user
 
 
 
-## user_commentテーブル
-|Column|Type|Options|
-|:------|:----|:-------|
-|user_id|integer|null: false,foreign_key: true|
-|comment_id|integer|null: false,foreign_key: true|
-
-## Association
-belongs_to :user
-belongs_to :comment
-
-
-
-
 ## commentsテーブル
 |Column|Type|Options|
 |:------|:----|:-------|
@@ -104,8 +91,7 @@ belongs_to :comment
 |content|text|null: :false|
 
 ## Association
-has_many :user_comments
-belongs_to :user, through: :user_comment
+belongs_to :user
 belongs_to :item
 
 ## index
