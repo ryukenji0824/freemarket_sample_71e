@@ -35,11 +35,10 @@ Things you may want to cover:
 |birthday|date|null: :false|
 
 ## Association
-has_many :user_comments
 has_many :cards
-has_many :adrresses
+has_many :addresses
 has_many :items
-has_many :comments, through: :user_comment
+has_many :comments
 
 
 ## index
@@ -138,7 +137,6 @@ belongs_to :item
 
 ## Association
 has_many :items
-has_many :categories
 
 ## index
 add_index: :name
@@ -154,7 +152,6 @@ add_index: :name
 
 ## Association
 has_many :items
-has_many :brands
 
 ## index
 add_index: [:gender, :name]
