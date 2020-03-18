@@ -104,6 +104,10 @@ add_index: [:user_id, :item_id]
 |description|text||
 |price|integer|null:　：false|
 |buyer_id|integer||
+|size|string||
+|condition|string|null: :false|
+|wait|string|null: :false|
+|postage|integer|null: :false|
 
 ## Association
 belongs_to :user
@@ -147,7 +151,6 @@ add_index: :name
 ## Categoriesテーブル
 |Column|Type|Options|
 |:------|:----|:-------|
-|gender|string|null: false,|
 |name|string|null: false|
 
 ## Association
