@@ -143,6 +143,10 @@ add_index: [:name, :price]
 |:------|:----|:-------|
 |image1|text|null: false|
 |image2|text|null: false|
+|image3|text|null: false|
+|image4|text|null: false|
+|image5|text|null: false|
+|image6|text|null: false|
 |item_id|integer|null: false, foreign_key: true|
 
 ## Association
