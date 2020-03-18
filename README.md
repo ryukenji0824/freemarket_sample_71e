@@ -31,10 +31,8 @@ Things you may want to cover:
 |e-mail|string|null:　：false|
 |number|integer|null: :false|
 |password|string|null: :false|
-|adress|string|null: :false|
 |gender|integer|null: :false|
 |birthday|date|null: :false|
-|comment_id|integer|foreign_key: true|
 
 ## Association
 has_many :user_comments
@@ -107,16 +105,13 @@ add_index: [:user_id, :item_id]
 |description|text||
 |price|integer|null:　：false|
 |buyer_id|integer||
-|brand_id|integer|foreign_key: true|
-|category_id|integer|null: faulse,foreign_key: true|
 
 ## Association
 belongs_to :user
 has_many :comments
 has_many :images
-has_many :item_category_brands
-has_many :brands, through: :item_category_brands
-has_many :categories, through: :item_category_brands
+belongs_to :brand
+belongs_to :category
 
 ## index
 add_index: [:name, :price]
@@ -127,12 +122,7 @@ add_index: [:name, :price]
 ## imagesテーブル
 |Column|Type|Options|
 |:------|:----|:-------|
-|image1|text|null: false|
-|image2|text|null: false|
-|image3|text|null: false|
-|image4|text|null: false|
-|image5|text|null: false|
-|image6|text|null: false|
+|image|text|null: false|
 |item_id|integer|null: false, foreign_key: true|
 
 ## Association
@@ -145,13 +135,10 @@ belongs_to :item
 |Column|Type|Options|
 |:------|:----|:-------|
 |name|string|null: false,|
-|item_id|integer|null: false, foreign_key: true|
-|category_id|integer|null: false, foreign_key: true|
 
 ## Association
-has_many :item_category_brands
-has_many :items, through :item_category_brand
-has_many :categories, through :item_category_brand
+has_many :items
+has_many :categories
 
 ## index
 add_index: :name
@@ -164,28 +151,11 @@ add_index: :name
 |:------|:----|:-------|
 |gender|string|null: false,|
 |name|string|null: false|
-|item_id|integer|null: false, foreign_key: true|
-|brand_id|integer|null: false, foreign_key: true|
 
 ## Association
-has_many :item_category_brands
-has_many :items , through :item_category_brand
-has_many :brands, through :item_category_brand
+has_many :items
+has_many :brands
 
 ## index
 add_index: [:gender, :name]
 
-
-
-
-## item_category_brandテーブル
-|Column|Type|Options|
-|:------|:----|:-------|
-|item_id|integer|null: false,foreign_key: true|
-|category_id|integer|foreign_key: true|
-|brand_id|integer|foreign_key: true|
-
-## Association
-belongs_to :item
-belongs_to :brand
-belongs_to :category
