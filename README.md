@@ -22,13 +22,16 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-　
+
 ## usersテーブル
 |Columm|Type|Options|
 |:------|:----|:-------|
-|name|string|null:　：false|
+|family_name|string|null: false|
+|first_name|string|null: false|
+|family_name_kana|string|null: false|
+|first_name_kana|string|null: false|
 |nickname|string|null: :false|
-|e-mail|string|null:　：false|
+|e-mail|string|null: ：false|
 |number|integer|null: :false|
 |password|string|null: :false|
 |gender|integer|null: :false|
@@ -50,10 +53,16 @@ add_index: [:nickname, :gender, :adress]
 ## addressesテーブル
 |colum|type|Opsion|
 |:------|:----|:-------|
+|family_name|string|null: false|
+|first_name|string|null: false|
+|family_name_kana|string|null: false|
+|first_name_kana|string|null: false|
 |postal_code|string|null: false|
 |city|string|null: false|
 |local|string|null: false|
+|block|string|null: false|
 |buildig|string||
+|number|integer||
 |user_id|integer|null: false, foreign_key: true|
 
 ## Association
