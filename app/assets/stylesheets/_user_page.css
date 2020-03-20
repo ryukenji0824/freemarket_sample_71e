@@ -1,12 +1,13 @@
 .u_body {
   width: 100vw;
-  height: 100vh;
-  background-color: gray;
+  height: 100%;
+  background-color: whitesmoke;
 }
 .u_body .u_container {
   margin: 40px auto;
   width: 700px;
   height: 100%;
+  background-color: white;
 }
 .u_body .u_container .u_profile {
   background-image: url("background_mypage.jpeg");
