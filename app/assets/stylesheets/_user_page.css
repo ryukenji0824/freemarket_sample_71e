@@ -1,12 +1,14 @@
 .u_body {
   width: 100vw;
   height: 100%;
+  top: 0px;
   background-color: whitesmoke;
+  margin: 0;
 }
 .u_body .u_container {
-  margin: 40px auto;
+  margin: 0px auto;
   width: 700px;
-  height: 100%;
+  height: calc(100% - 80px);
   background-color: white;
 }
 .u_body .u_container .u_profile {
@@ -228,10 +230,11 @@
 .u_body .u_container .u_item-box_container_item_link_body {
   padding: 16px;
   height: 110px;
+  position: relative;
 }
 .u_body .u_container .u_item-box_container_item_link_body-name {
   overflow: hidden;
-  position: relative;
+  position: absolute;
   font-weight: 400;
   height: 3em;
   line-height: 1.5;
@@ -243,6 +246,8 @@
   text-decoration: none;
 }
 .u_body .u_container .u_item-box_container_item_link_body_under {
+  position: absolute;
+  top: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -253,12 +258,13 @@
   font-weight: 600;
   color: #333;
   text-decoration: none;
-  display: inline-block;
+  float: left;
 }
 .u_body .u_container .u_item-box_container_item_link_body_under-favorite {
   font-size: 16px;
   font-weight: 400;
   color: #333;
+  margin-left: 64px;
 }
 .u_body .u_container .u_item-box_container_item_link_body_under-favorite_icon {
   color: #ccc;

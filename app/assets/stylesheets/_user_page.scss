@@ -1,11 +1,13 @@
 .u_body{
   width: 100vw;
   height: 100%;
+  top: 0px;
   background-color: whitesmoke;
+  margin: 0;
   .u_container{
-    margin: 40px auto;
+    margin: 0px auto;
     width: 700px;
-    height: 100%;
+    height: calc(100% - 80px);
     background-color: white;
     .u_profile{
       background-image: url("background_mypage.jpeg");
@@ -224,9 +226,10 @@
             &_body{
               padding: 16px;
               height: 110px;
+              position: relative;
               &-name{
                 overflow: hidden;
-                position: relative;
+                position: absolute;
                 font-weight: 400;
                 height: 3em;
                 line-height: 1.5;
@@ -238,6 +241,8 @@
                 text-decoration: none;
               }
               &_under{
+                position: absolute;
+                top: 60px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
@@ -247,12 +252,13 @@
                   font-weight: 600;
                   color: #333;
                   text-decoration: none;
-                  display: inline-block;
+                  float: left;
                 }
                 &-favorite{
                   font-size: 16px;
                   font-weight: 400;
                   color: #333;
+                  margin-left: 64px;
                   &_icon{
                     color: #ccc;
                   }
@@ -276,3 +282,4 @@ a, a:visited, a:hover, a:active {
   text-decoration: none;
   color: inherit;
 }
+
