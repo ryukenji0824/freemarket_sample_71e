@@ -35,7 +35,9 @@ Things you may want to cover:
 |number|integer|null: :false|
 |password|string|null: :false|
 |gender|integer|null: :false|
-|birthday|date|null: :false|
+|year|integer|null: :false|
+|month|integer|null: :false|
+|day|integer|null: :false|
 
 ## Association
 has_many :cards
