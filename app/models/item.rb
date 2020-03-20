@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
+  validates :name, :descripton, :price, :buyer_id, :size, :condition, :wait, :postage, :category_id, :brand_id, presence: true
   
   belongs_to :user
   has_many :comments
