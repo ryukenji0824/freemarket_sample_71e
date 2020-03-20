@@ -45,7 +45,7 @@ has_many :comments
 
 
 ## index
-add_index: [:nickname, :gender, :adress]
+add_index: [:nickname, :gender]
 
 
 
@@ -63,7 +63,7 @@ add_index: [:nickname, :gender, :adress]
 |block|string|null: false|
 |buildig|string||
 |number|integer||
-|user_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 
 ## Association
 belongs_to :user
