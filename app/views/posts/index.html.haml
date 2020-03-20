@@ -15,10 +15,16 @@
         %a(id="brandBtn" href="/")
           .t__head__bar__search__box-brandブランド
       .t__head__bar__search__select
-        %a(id="logBtn" href="/")
-          .t__head__bar__search__select-loginログイン
-        %a(id="newBtn" href="/")
-          .t__head__bar__search__select-new新規会員登録
+        -if user_signed_in?
+          = link_to user_path(current_user),id: "logBtn" do
+            .t__head__bar__search__select-login マイページ
+          = link_to destroy_user_session_path, method: :delete, id: "newBtn" do
+            .t__head__bar__search__select-login ログアウト
+        -else
+          = link_to new_user_session_path,id: "logBtn" do
+            .t__head__bar__search__select-login ログイン
+          = link_to new_user_registration_path,id: "newBtn" do
+            .t__head__bar__search__select-login 新規会員登録
 .t__center
   .t__center__image
     .t__center__image__content
