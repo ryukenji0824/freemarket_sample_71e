@@ -1,1 +1,65 @@
-トップページ 自動デプロイテスト
+.t__main
+  .t__head__bar
+    .t__head__bar__box
+      .t__head__bar__box-logo
+        %a(href="/")
+          = image_tag '/assets/logo.png', alt: '', height: '40px', width: '140px', class: 'img-logo'
+      %input.t__head__bar__box-text-box{:name => "search", :placeholder => "キーワードから探す", :type => "search", :value => ""}/
+      .t__head__bar__box-text-box-btn(type="submit")
+        %a(href="/")
+          = image_tag '/assets/icon-search 1.png', alt: '',height: '22px',width:'22px',type: 'submit', class: 't__head__bar__box-text-box-btn-icon'
+    .t__head__bar__search
+      .t__head__bar__search__box
+        %a(id="categoryBtn" href="/")
+          .t__head__bar__search__box-categoryカテゴリー
+        %a(id="brandBtn" href="/")
+          .t__head__bar__search__box-brandブランド
+      .t__head__bar__search__select
+        %a(id="logBtn" href="/")
+          .t__head__bar__search__select-loginログイン
+        %a(id="newBtn" href="/")
+          .t__head__bar__search__select-new新規会員登録
+.t__center
+  .t__center__image
+    .t__center__image__content
+      %h2(class=".t__center__image__content-text")人生を変えるフリマアプリ
+      %h2.t__center__image__content-message
+        %p.t__center__image__content-message-line
+          FURIMAはだれでも簡単に出品・購入できる
+          %br
+          フリマアプリです
+      .t__center__image__content-icon
+        .t__center__image__content-icon-app
+        .t__center__image__content-icon-google
+          %a(id="gBtn" href="http://google.co.jp")
+            = image_tag '/assets/google-play-badge.png', alt: '', class: 'google'
+
+.t__center__middle
+  .t__center__middle__title
+    %h2.t__center__middle__title-text FURIMAが選ばれる3つの理由
+  .t__center__middle__content
+    .t__center__middle__content__box
+      .t__center__middle__content__box__image
+        = image_tag '/assets/pict-reason-01.jpg', alt: '' , width: '100%', class: ''
+        .t__center__middle__content__box__image__num 1
+      .t__center__middle__content__box__message
+        .t__center__middle__content__box__message--left 3分
+        .t__center__middle__content__box__message--right ですぐに出品
+      .t__center__middle__content__box__message--bottom スマホで入力するだけで簡単に出品できる！
+    .t__center__middle__content__box
+      .t__center__middle__content__box__image
+        = image_tag '/assets/pict-reason-02.jpg', alt: '', height: '', width: '100%', class: ''
+        .t__center__middle__content__box__image__num 2
+      .t__center__middle__content__box__message
+        .t__center__middle__content__box__message--left シンプル
+        .t__center__middle__content__box__message--right で使いやすい
+      .t__center__middle__content__box__message--bottom めんどくさい入力は必要なく、検索も購入もスムーズ！
+    .t__center__middle__content__box--last
+      .t__center__middle__content__box--last__image
+        = image_tag '/assets/pict-reason-03.jpg', alt: '', height: '', width: '100%', class: ''
+        .t__center__middle__content__box--last__image__num 3
+      .t__center__middle__content__box--last__message
+        .t__center__middle__content__box--last__message--left 手数料
+        .t__center__middle__content__box--last__message--right 業界最安
+      .t__center__middle__content__box--last__message--bottom 最大3%でお得に出品&購入！
+
