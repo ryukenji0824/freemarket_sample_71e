@@ -7,17 +7,16 @@
         .d-itemBox__name
           product1
         .d-itemBox__body
-          -# 画像のサイズの調整必要あり
           %ul
             %li
-              %image{:src => "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png"}
-                %ul
-                  %li
-                    %image{:src => "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", :width => "75", :height => "75"}
-                  %li
-                    %image{:src => "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/11/a005.png", :width => "75", :height => "75"}
-                  %li
-                    %image{:src => "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/12/a006.png", :width => "75", :height => "75"}
+              = image_tag  "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png"
+              %ul
+                %li
+                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", :width => "75", :height => "75"
+                %li
+                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/11/a005.png", :width => "75", :height => "75"
+                %li
+                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/12/a006.png", :width => "75", :height => "75"
 
         .d-itemBox__price
           ¥10000

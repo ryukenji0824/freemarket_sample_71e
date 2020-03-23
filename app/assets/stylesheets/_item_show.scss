@@ -14,10 +14,6 @@
   margin: 0 auto;
   width: 700px;
 }
-    
-.d-content {
-  // background-color: #ffffff;
-}
 
 .d-itemBox {
   padding: 24px 40px 40px;
@@ -39,6 +35,11 @@
         align-items: center;
         margin: 0 auto;
         flex-direction: column;
+        img {
+          width: 100%;
+          object-fit: cover;
+          height: 346px;
+        }
         ul {
           display: flex;
           justify-content: center;
@@ -46,6 +47,10 @@
           li {
             width: 25%;
             margin: 0 10px 0 0;
+            img {
+              object-fit: cover;
+              height: 87px;
+            }
           }
         }
       }
