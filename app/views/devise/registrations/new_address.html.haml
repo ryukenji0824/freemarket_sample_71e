@@ -1,0 +1,10 @@
+%h2 Sign up
+= form_for(@address) do |f|
+  = render "devise/shared/error_messages", resource: @address
+  .field
+    = f.label :nickname
+    %br/
+    = f.text_field :nickname, autofocus: true, autocomplete: "nickname"
+  .actions
+    = f.submit "Sign up"
+= render "devise/shared/links"

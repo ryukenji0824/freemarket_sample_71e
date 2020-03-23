@@ -34,6 +34,7 @@ Things you may want to cover:
 |e-mail|string|null: ：false|
 |number|integer|null: :false|
 |password|string|null: :false|
+|password_confirmation|string|null: :false|
 |gender|integer|null: :false|
 |year|integer|null: :false|
 |month|integer|null: :false|
@@ -79,10 +80,7 @@ add_index: :city
 ## Cardsテーブル
 |Column|Type|Options|
 |:------|:----|:-------|
-|card_number|integer|null: false,|
-|name|string|null: false|
-|CVC|integer|null: false|
-|limit_date|integer|null: false|
+|card_token|string|null: false,|
 |user_id|integer|null: false, foreign_key: true|
 
 ## Association
