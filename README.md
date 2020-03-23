@@ -64,7 +64,7 @@ add_index: [:nickname, :gender]
 |city|string|null: false|
 |local|string|null: false|
 |block|string|null: false|
-|buildig|string||
+|building|string||
 |number|integer||
 |user_id|references|null: false, foreign_key: true|
 

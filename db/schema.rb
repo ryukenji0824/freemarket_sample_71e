@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20200320043000) do
     t.string   "local",            null: false
     t.string   "block",            null: false
     t.string   "building"
+    t.string   "number"
     t.integer  "user_id",          null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
