@@ -39,6 +39,7 @@ Things you may want to cover:
 |year|integer|null: :false|
 |month|integer|null: :false|
 |day|integer|null: :false|
+|introduction|text||
 
 ## Association
 has_many :cards
