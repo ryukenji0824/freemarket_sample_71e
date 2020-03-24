@@ -2,7 +2,7 @@
   ユーザー情報の変更
 = link_to edit_address_path(@user)  do
   配送先情報の変更
-- if @card.user_id = @user
+- if @card.user_id == @user
   = link_to edit_card_path(@user)  do
     お支払い情報の変更
 - else
