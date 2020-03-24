@@ -10,6 +10,7 @@ class CreateAddresses < ActiveRecord::Migration[5.0]
       t.string     :local,                   null: false
       t.string     :block,                   null: false
       t.string     :building
+      t.string     :number
       t.references :user,                    null: false
 
       t.timestamps
