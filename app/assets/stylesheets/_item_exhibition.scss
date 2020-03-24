@@ -1,0 +1,80 @@
+.e__center{
+  width: 100%;
+  height: 400px;
+  background-color: white;
+  &__image{
+    background-image: url(/assets/bg-mainVisual-pict_pc.jpg);
+    width: 100%;
+    height: 400px;
+    background-position: top center;
+    position: relative;
+    display: flex;
+    padding: 0 60px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    &__content{
+      width: 100%;
+      height: 400px;
+      margin: 0 20px;
+      padding-top: 130px;
+      h2{
+          text-shadow: 0 0 5px rgba(0,0,0,0.4);
+          font-size: 60px;
+          color: #fff;
+      }
+      p{
+        text-shadow:0 0 5px rgba(0,0,0,0.4);
+        font-size: 18px;
+      }
+      .e__center__image__content-icon-google{
+        width: 180px;
+        padding: 0;
+        #gBtn{
+          
+          .google{
+            margin-top: 25px;
+            width: 100%;
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+}
+.e__middle {
+  height: 100%;
+  width: 100%;
+  background-color: #f8f8f8;
+  &__title
+    h1 {
+      font-weight: bold;
+      text-align: center;
+      font-size: 25px;
+      padding: 5px;
+    }
+  &__container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    &__content {
+      height: 300px;
+      width: 190px;
+      margin: 10px;
+      border-radius: 2px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.22);
+      border-top: solid 2px #5d627b;
+      &__image {
+        margin: 2px;
+        height: 200px;
+        .exhibition-image {}
+      }
+      &__name {
+        padding: 10px 10px;
+      }
+    }
+  }
+}

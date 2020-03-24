@@ -1,0 +1,6 @@
+.e__middle__container__content
+  .e__middle__container__content__image
+    = image_tag item.images[0].src.url
+  .e__middle__container__content__name
+    = link_to item.name, item_path(item.id)
+      
