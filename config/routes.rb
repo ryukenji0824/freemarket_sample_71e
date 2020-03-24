@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'addresses/edit'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -12,4 +11,5 @@ Rails.application.routes.draw do
   resources :users,     only: [:show, :index, :edit]
   resources :items,     only: [:new, :create, :show]
   resources :addresses, only: [:edit]
+  resources :cards, only: [:new, :edit]
 end
