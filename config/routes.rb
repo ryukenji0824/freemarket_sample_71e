@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'addresses/edit'
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
     post 'addresses', to: 'users/registrations#create_address'
   end
   root 'posts#index'
-  resources :users, only: :show
-  resources :items, only: [:new, :create, :show]
+  resources :users,     only: [:show, :index, :edit]
+  resources :items,     only: [:new, :create, :show]
+  resources :addresses, only: [:edit]
 end
