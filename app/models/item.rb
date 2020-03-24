@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  validates :user_id, :name, :description, :price, :condition, :wait, :postage, :category_id, :brand_id, :prefecture_id, presence: true
+  validates :user_id, :name, :description, :size, :price, :condition, :wait, :postage, :category_id, :brand_id, :prefecture_id, presence: true
   belongs_to :user, optional: true
   has_many :comments
   belongs_to :brand

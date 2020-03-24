@@ -14,7 +14,7 @@
                 -@item.images.each_with_index do |image, i|
                   =image_tag image.src.url, data: { index: i }, width: "100", height: '100'
             = f.fields_for :images do |image|
-              .js-file_group{"data-index" => "#{image.index}"}
+              .js-file_group{"data-index": "#{image.index}"}
                 = image.file_field :src, class: 'js-file' 
                 %br/
                 %span.js-remove 
@@ -35,9 +35,11 @@
           = f.text_area :description, class: "description-box", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）おじいちゃんの形見です。", rows: "5"
         .n__details__container
           %p.message 商品の詳細
+          %p.message サイズ（任意)
+          = f.text_field :size, class: "select-box",  placeholder: "（例）S, M, L"
           %p.message カテゴリー（必須)
           = f.collection_select :category_id, Category.all, :id, :name, {}, {class: "select-box"}
-          %p.message ブランド（必須、ノーブランドでもいいよ！）
+          %p.message ブランド（必須）
           = f.collection_select :brand_id, Brand.all, :id, :name, {}, {class: "select-box"}
           %p.message 商品の状態（必須）
           = f.text_field :condition, class: "select-box",  placeholder: "（例）とても良い"
