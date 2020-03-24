@@ -1,3 +1,4 @@
+
 .d-header {
   background-color: skyblue;
   width: 100vw;
@@ -70,6 +71,9 @@
   .d-itemDetail {
     font-size: 18px;
     margin-bottom: 30px;
+    p {
+      word-break: break-all;
+    }
   }
   
   .d-table {
@@ -93,6 +97,9 @@
           }
         }
       }
+    }
+    &--blue{
+      color: #3CCACE;
     }
   }
   .d-optonalArea {
@@ -144,13 +151,30 @@
       border: 1px solid #3CCACE;
       color: #fff;
     }
+    &__deleteBtn {
+      background-color: grey;
+      border: 1px solid grey;
+    }
+    &__buyBtn {
+      background-color: #3CCACE;
+      border: 1px solid #3CCACE;
+      color: #fff;
+    }
+    &__soldOutNotice{
+      background-color: #3CCACE;
+      color: #fff;
+      margin: 16px 0px;
+      height: 53px;
+      line-height: 53px;
+    }
+    button {
+      width: 100%;
+      font-size: 16px;
+      line-height: 48px;
+      margin: 16px 0;
+    }
   }
-  button {
-    width: 100%;
-    font-size: 16px;
-    line-height: 48px;
-    margin: 16px 0;
-  }
+ 
 }
 
 
