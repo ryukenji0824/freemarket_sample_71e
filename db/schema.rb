@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20200323041445) do
-
+ActiveRecord::Schema.define(version: 20200324064341) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "family_name",      null: false
@@ -32,16 +30,17 @@ ActiveRecord::Schema.define(version: 20200323041445) do
     t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
+  create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "token",      limit: 65535, null: false
     t.integer  "user_id",                  null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.index ["user_id"], name: "index_cards_on_user_id", using: :btree
-
-  create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -82,24 +81,25 @@ ActiveRecord::Schema.define(version: 20200323041445) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "password_confirmation",  default: "", null: false
-    t.string   "family_name",                         null: false
-    t.string   "first_name",                          null: false
-    t.string   "family_name_kana",                    null: false
-    t.string   "first_name_kana",                     null: false
-    t.string   "nickname",                            null: false
-    t.string   "number",                              null: false
-    t.integer  "gender",                              null: false
-    t.integer  "year",                                null: false
-    t.integer  "month",                               null: false
-    t.integer  "day",                                 null: false
+    t.string   "email",                                default: "", null: false
+    t.string   "encrypted_password",                   default: "", null: false
+    t.string   "password_confirmation",                default: "", null: false
+    t.string   "family_name",                                       null: false
+    t.string   "first_name",                                        null: false
+    t.string   "family_name_kana",                                  null: false
+    t.string   "first_name_kana",                                   null: false
+    t.string   "nickname",                                          null: false
+    t.string   "number",                                            null: false
+    t.integer  "gender",                                            null: false
+    t.integer  "year",                                              null: false
+    t.integer  "month",                                             null: false
+    t.integer  "day",                                               null: false
+    t.text     "introduction",           limit: 65535
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["nickname", "gender"], name: "index_users_on_nickname_and_gender", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
@@ -109,5 +109,4 @@ ActiveRecord::Schema.define(version: 20200323041445) do
   add_foreign_key "cards", "users"
   add_foreign_key "images", "items"
   add_foreign_key "items", "users"
-
 end
