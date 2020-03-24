@@ -572,3 +572,94 @@
     }
   }
 }
+
+.u_item-box{
+  &_user-name{
+    font-size: 22px;
+    margin: 24px 0 8px;
+    color: black;
+  }
+  &_container{
+    width: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    &_item{
+      position: relative;
+      background-color: #fff;
+      margin: auto;
+      display: block;
+      float: left;
+      width: 220px;
+      height: 330px;
+      &_link{
+        display: block;
+        color: #333;
+        display: inline-block;
+        text-decoration: none;
+        &-box{
+          width: 220px;
+          height: 220px;
+          margin: 0;
+          &_image{
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            width: 220px;
+            height: 220px;
+          }
+        }
+        &_body{
+          padding: 16px;
+          height: 110px;
+          position: relative;
+          &-name{
+            overflow: hidden;
+            position: absolute;
+            font-weight: 400 !important;
+            height: 3em !important;
+            line-height: 1.5 !important;
+            word-break: break-word !important;
+            white-space: normal !important;
+            font-size: 16px !important;
+            color: #333 !important;
+            display: inline-block;
+            text-decoration: none;
+          }
+          &_under{
+            position: absolute;
+            top: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 8px 0 0;
+            &-price{
+              font-size: 16px;
+              font-weight: 600;
+              color: #333;
+              text-decoration: none;
+              float: left;
+            }
+            &-favorite{
+              font-size: 16px;
+              font-weight: 400;
+              color: #333;
+              margin-left: 64px;
+              &_icon{
+                color: #ccc;
+              }
+              &_number{
+                font-size: 16px;
+                font-weight: 400;
+                color: #333;
+                text-decoration: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
