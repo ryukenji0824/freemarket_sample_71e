@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200320043000) do
+ActiveRecord::Schema.define(version: 20200323041445) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "family_name",      null: false
@@ -29,20 +29,45 @@ ActiveRecord::Schema.define(version: 20200320043000) do
     t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
+  create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "src"
+    t.integer  "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_images_on_item_id", using: :btree
+  end
+
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                      null: false
-    t.text     "description", limit: 65535
-    t.integer  "price",                     null: false
+    t.integer  "user_id"
+    t.string   "name",                        null: false
+    t.text     "description",   limit: 65535, null: false
+    t.integer  "price",                       null: false
+    t.string   "condition",                   null: false
+    t.string   "wait",                        null: false
+    t.string   "postage",                     null: false
+    t.integer  "category_id",                 null: false
+    t.integer  "brand_id",                    null: false
+    t.integer  "prefecture_id",               null: false
     t.integer  "buyer_id"
-    t.string   "size"
-    t.string   "condition",                 null: false
-    t.string   "wait",                      null: false
-    t.integer  "postage",                   null: false
-    t.integer  "category_id",               null: false
-    t.integer  "brand_id",                  null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["name", "price"], name: "index_items_on_name_and_price", using: :btree
+    t.index ["user_id"], name: "index_items_on_user_id", using: :btree
+  end
+
+  create_table "prefectures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -67,4 +92,6 @@ ActiveRecord::Schema.define(version: 20200320043000) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "images", "items"
+  add_foreign_key "items", "users"
 end

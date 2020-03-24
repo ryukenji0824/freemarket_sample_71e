@@ -1,0 +1,7 @@
+- item.images.each do |image|
+  .e__middle__container__content
+    .e__middle__container__content__image
+      = image_tag image.src.url
+    .e__middle__container__content__name
+      = link_to item.name, "/items/#{item.id}"
+      

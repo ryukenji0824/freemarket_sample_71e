@@ -1,0 +1,15 @@
+= render partial: 'layouts/header', locals: { header: @header }
+- @item.images.each do |image|
+  = image_tag image.src.url
+= @item.user.nickname
+= @item.name
+= @item.description
+= @item.price
+= @item.condition
+= @item.wait
+= @item.postage
+= @item.category.name
+= @item.brand.name
+= @item.prefecture.name
+= link_to '編集', edit_item_path(@item)
+= link_to '削除', item_path(@item), method: :delete
