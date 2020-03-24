@@ -34,8 +34,11 @@ Things you may want to cover:
 |e-mail|string|null: ：false|
 |number|integer|null: :false|
 |password|string|null: :false|
+|password_confirmation|string|null: :false|
 |gender|integer|null: :false|
-|birthday|date|null: :false|
+|year|integer|null: :false|
+|month|integer|null: :false|
+|day|integer|null: :false|
 
 ## Association
 has_many :cards
@@ -61,7 +64,7 @@ add_index: [:nickname, :gender]
 |city|string|null: false|
 |local|string|null: false|
 |block|string|null: false|
-|buildig|string||
+|building|string||
 |number|integer||
 |user_id|references|null: false, foreign_key: true|
 
@@ -77,10 +80,7 @@ add_index: :city
 ## Cardsテーブル
 |Column|Type|Options|
 |:------|:----|:-------|
-|card_number|integer|null: false,|
-|name|string|null: false|
-|CVC|integer|null: false|
-|limit_date|integer|null: false|
+|card_token|string|null: false,|
 |user_id|integer|null: false, foreign_key: true|
 
 ## Association

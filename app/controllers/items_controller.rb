@@ -46,6 +46,10 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
   
+  def show
+    @item = Item.find(params[:id])
+  end
+  
   private
   def item_params
     params.require(:item).permit(:name, :description, :brand_id, :price, :condition, :wait, :postage, :category_id, :prefecture_id, :buyer_id, images_attributes: [:src, :destroy, :id]).merge(user_id: current_user.id)  

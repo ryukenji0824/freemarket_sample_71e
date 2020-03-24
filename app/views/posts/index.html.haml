@@ -10,9 +10,11 @@
           フリマアプリです
       .t__center__image__content-icon
         .t__center__image__content-icon-app
+          %a(id="aBtn" href="http://google.co.jp")
+            = image_tag '/assets/apple-icon.png', alt: '', class: 'apple'
         .t__center__image__content-icon-google
           %a(id="gBtn" href="http://google.co.jp")
-            = image_tag '/assets/google-play-badge.png', alt: '', class: 'google'
+            = image_tag '/assets/google-play.png', alt: '', class: 'google'
 
 .t__center__middle
   .t__center__middle__title
@@ -42,4 +44,135 @@
         .t__center__middle__content__box--last__message--left 手数料
         .t__center__middle__content__box--last__message--right 業界最安
       .t__center__middle__content__box--last__message--bottom 最大3%でお得に出品&購入！
-
+.t__center__middle__image
+  .t__center__middle__image__sentence
+    %h2.t__center__middle__image__sentence__title 会員数日本一位 
+    .t__center__middle__image__sentence__box
+      %p.t__center__middle__image__sentence__box__text
+        FURIMAは、フリマアプリで最も人気。
+        %br 出品・購入回数も業界最多です！
+        ほしかったあの商品に出会えるかもしれません。
+  .t__center__middle__image-icon
+    .t__center__middle-icon-app
+      %a(id="aBtn" href="http://google.co.jp")
+        = image_tag '/assets/apple-icon.png', alt: '', class: 'apple'
+    .t__center__middle-icon-google
+      %a(id="gBtn" href="http://google.co.jp")
+        = image_tag '/assets/google-play.png', alt: '', class: 'google'
+.t__center__bottom
+  .t__center__bottom__title 
+    %p FURIMAの特徴
+    %after
+  .t__center__bottom__image
+    .t__center__bottom__image__icon
+      .t__center__bottom__image__icon--1
+        = image_tag '/assets/icon-01.png', alt: '', height: '', width: '100%', class: 'img1'
+      .t__center__bottom__image__sentence
+        %h3 簡単に売り買いできる
+        %p スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+    .t__center__bottom__image__icon
+      .t__center__bottom__image__icon--2
+        = image_tag '/assets/icon-03.png', alt: '', height: '', width: '100%', class: 'img2'
+      .t__center__bottom__image__sentence
+        %h3 売上金は即日振込みに対応
+        %p 午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+    .t__center__bottom__image__icon
+      .t__center__bottom__image__icon--3
+        = image_tag '/assets/icon-04.png', alt: '', height: '', width: '100%', class: 'img3'
+      .t__center__bottom__image__sentence
+        %h3 様々な支払いに対応
+        %p お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+.t__pickup
+  .t__pickup__category
+    %h2 ピックアップカテゴリー
+  .t__pickup__new
+    %h3 新規投稿商品
+    .t__pickup__new--item
+      .u_item-box_container_item
+        = link_to "#",class:".u_item-box_container_item_link" do
+          %figure.u_item-box_container_item_link-box
+            = image_tag "pict-reason-02.jpg", class: "u_item-box_container_item_link-box_image"
+          .u_item-box_container_item_link_body
+            %h3.u_item-box_container_item_link_body-name スマホと手のセット
+            .u_item-box_container_item_link_body_under
+              .u_item-box_container_item_link_body_under-price ￥99,999
+              .u_item-box_container_item_link_body_under-favorite
+                %i.far.fa-heart.u_item-box_container_item_link_body_under-favorite_icon
+                %span.u_item-box_container_item_link_body_under-favorite_number 12
+      .u_item-box_container_item
+        = link_to "#",class:".u_item-box_container_item_link" do
+          %figure.u_item-box_container_item_link-box
+            = image_tag "pict-reason-02.jpg", class: "u_item-box_container_item_link-box_image"
+          .u_item-box_container_item_link_body
+            %h3.u_item-box_container_item_link_body-name スマホと手のセット
+            .u_item-box_container_item_link_body_under
+              .u_item-box_container_item_link_body_under-price ￥99,999
+              .u_item-box_container_item_link_body_under-favorite
+                %i.far.fa-heart.u_item-box_container_item_link_body_under-favorite_icon
+                %span.u_item-box_container_item_link_body_under-favorite_number 12
+      .u_item-box_container_item
+        = link_to "#",class:".u_item-box_container_item_link" do
+          %figure.u_item-box_container_item_link-box
+            = image_tag "pict-reason-02.jpg", class: "u_item-box_container_item_link-box_image"
+          .u_item-box_container_item_link_body
+            %h3.u_item-box_container_item_link_body-name スマホと手のセット
+            .u_item-box_container_item_link_body_under
+              .u_item-box_container_item_link_body_under-price ￥99,999
+              .u_item-box_container_item_link_body_under-favorite
+                %i.far.fa-heart.u_item-box_container_item_link_body_under-favorite_icon
+                %span.u_item-box_container_item_link_body_under-favorite_number 12
+.t__pickup
+  .t__pickup__category
+    %h2 ピックアップブランド
+  .t__pickup__new
+    %h3 アーカイバ
+    .t__pickup__new--item
+      .u_item-box_container_item
+        = link_to "#",class:".u_item-box_container_item_link" do
+          %figure.u_item-box_container_item_link-box
+            = image_tag "pict-reason-02.jpg", class: "u_item-box_container_item_link-box_image"
+          .u_item-box_container_item_link_body
+            %h3.u_item-box_container_item_link_body-name スマホと手のセット
+            .u_item-box_container_item_link_body_under
+              .u_item-box_container_item_link_body_under-price ￥99,999
+              .u_item-box_container_item_link_body_under-favorite
+                %i.far.fa-heart.u_item-box_container_item_link_body_under-favorite_icon
+                %span.u_item-box_container_item_link_body_under-favorite_number 12
+      .u_item-box_container_item
+        = link_to "#",class:".u_item-box_container_item_link" do
+          %figure.u_item-box_container_item_link-box
+            = image_tag "pict-reason-02.jpg", class: "u_item-box_container_item_link-box_image"
+          .u_item-box_container_item_link_body
+            %h3.u_item-box_container_item_link_body-name スマホと手のセット
+            .u_item-box_container_item_link_body_under
+              .u_item-box_container_item_link_body_under-price ￥99,999
+              .u_item-box_container_item_link_body_under-favorite
+                %i.far.fa-heart.u_item-box_container_item_link_body_under-favorite_icon
+                %span.u_item-box_container_item_link_body_under-favorite_number 12
+      .u_item-box_container_item
+        = link_to "#",class:".u_item-box_container_item_link" do
+          %figure.u_item-box_container_item_link-box
+            = image_tag "pict-reason-02.jpg", class: "u_item-box_container_item_link-box_image"
+          .u_item-box_container_item_link_body
+            %h3.u_item-box_container_item_link_body-name スマホと手のセット
+            .u_item-box_container_item_link_body_under
+              .u_item-box_container_item_link_body_under-price ￥99,999
+              .u_item-box_container_item_link_body_under-favorite
+                %i.far.fa-heart.u_item-box_container_item_link_body_under-favorite_icon
+                %span.u_item-box_container_item_link_body_under-favorite_number 12
+.t__bottom
+  .t__bottom__innner
+    %h2.t__bottom__innner__title だれでもかんたん、人生を変えるフリマアプリ
+    %p.t__bottom__innner__text 今すぐ無料ダウンロード！
+    .t__bottom__innner__icon
+      .t__bottom__innner__icon-app
+        %a(id="aBtn" href="http://google.co.jp")
+          = image_tag '/assets/apple-icon.png', alt: '', class: 'apple'
+      .t__bottom__innner__icon-google
+        %a(id="gBtn" href="http://google.co.jp")
+          = image_tag '/assets/google-play.png', alt: '', class: 'google'
+= render partial: 'layouts/footer', locals: { footer: @footer }
+%a(href="/items/new")
+  .sellBtn
+    %span.sellBtn__text 出品する
+    = image_tag '/assets/icon_camera.png', alt: '', height: '', width: '', class: 'sellBtn__icon'
