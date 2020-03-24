@@ -1,10 +1,8 @@
 class UsersController < ApplicationController
 
   def index
-    @user = current_user.id
-    if @card = Card.find(@user).present?
-      @card = Card.find(@user)
-    end
+    @user_id = current_user.id
+    @user = User.find(@user_id)
   end
 
   def show
