@@ -8,11 +8,17 @@ Rails.application.routes.draw do
     post 'addresses', to: 'users/registrations#create_address'
   end
   root 'posts#index'
-  resources :users,     only: [:show, :index, :edit]
+
+  resources :users,     only: [:show, :index, :edit, :update]
   resources :items do
     resources :comments
   end
-  resources :addresses, only: [:edit]
-  resources :cards, only: [:new, :edit]
-
+  resources :addresses, only: [:edit, :update]
+  resources :cards, only: [:new, :show] do
+    collection do
+      post 'show', to: 'card#show'
+      post 'pay', to: 'card#pay'
+      post 'delete', to: 'card#delete'
+    end
+  end  
 end

@@ -16,6 +16,8 @@ class User < ApplicationRecord
   validates :family_name_kana,:first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/,
     message: "全角カナのみが使えます" }
 
+  # アソシエーション
+  has_many :items
   has_one :address
   has_one :card
 end

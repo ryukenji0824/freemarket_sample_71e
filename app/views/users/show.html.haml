@@ -30,11 +30,7 @@
           .u_detail_review-box_each_bad_number 0
       .u_detail_content
         %p.u_detail_content_comment
-          ここに自己紹介文がはいります
-          %br
-          こんなかんじ
-          %br
-          実際にはデータベースから値をとるのでbrタグは使いません
+          = simple_format @user.introduction
     .u_sns
       %ul.u_sns-box
         %li.u_sns-box_facebook
