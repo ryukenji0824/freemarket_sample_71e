@@ -1,64 +1,63 @@
-%h2 Sign up
+%h2 会員情報登録
 = form_for(@user, url: registration_path(resource_name)) do |f|
   = devise_error_messages
   .field
-    = f.label :nickname
+    = f.label "ニックネーム"
     %br/
     = f.text_field :nickname, autofocus: true, autocomplete: "nickname"
   .field
-    = f.label :email
+    = f.label "Eメールアドレス"
     %br/
     = f.email_field :email, autofocus: true, autocomplete: "email"
   .field
-    = f.label :password
+    = f.label "パスワード"
     - if @minimum_password_length
       %em
         (7 characters minimum)
     %br/
     = f.password_field :password, autocomplete: "new-password"
   .field
-    = f.label :password_confirmation
+    = f.label "パスワード（確認用）"
     - if @minimum_password_length
       %em
         (7 characters minimum)
     %br/
     = f.password_field :password_confirmation, autocomplete: "password_confirmation"
   .field
-    = f.label :family_name
+    = f.label "名字"
     %br/
     = f.text_field :family_name, autofocus: true, autocomplete: "family_name"
   .field
-    = f.label :first_name
+    = f.label "名前"
     %br/
     = f.text_field :first_name, autofocus: true, autocomplete: "first_name"
   .field
-    = f.label :family_name_kana
+    = f.label "ミョウジ"
     %br/
     = f.text_field :family_name_kana, autofocus: true, autocomplete: "family_name_kana"
   .field
-    = f.label :first_name_kana
+    = f.label "ナマエ"
     %br/
     = f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana"
   .field
-    = f.label :year
+    = f.label "年"
     %br/
     = f.text_field :year, autofocus: true, autocomplete: "year"
   .field
-    = f.label :month
+    = f.label "月"
     %br/
     = f.text_field :month, autofocus: true, autocomplete: "month"
   .field
-    = f.label :day
+    = f.label "日"
     %br/
     = f.text_field :day, autofocus: true, autocomplete: "day"
   .field
-    = f.label :number
+    = f.label "電話番号"
     %br/
     = f.text_field :number, autofocus: true, autocomplete: "number"
   .field
-    = f.label :gender
+    = f.label "性別"
     %br/
     = f.text_field :gender, autofocus: true, autocomplete: "gender"
   .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+    = f.submit "住所登録画面へ"
