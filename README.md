@@ -32,7 +32,7 @@ Things you may want to cover:
 |first_name_kana|string|null: false|
 |nickname|string|null: :false|
 |e-mail|string|null: ：false|
-|number|integer|null: :false|
+|number|string|null: :false|
 |password|string|null: :false|
 |password_confirmation|string|null: :false|
 |gender|integer|null: :false|
@@ -110,7 +110,7 @@ add_index: [:user_id, :item_id]
 ## itemsテーブル
 |Column|Type|Options|
 |:------|:----|:-------|
-|user|string|foreign_key: true|
+|user_id|integer|foreign_key: true|
 |name|string|null:：false|
 |description|text|null: :false|
 |price|integer|null:：false|
