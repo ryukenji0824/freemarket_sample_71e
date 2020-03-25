@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:update, :edit, :show, :destroy]
   
   def index
-    @items = Item.includes(:images).all
+    @items = Item.includes(:images).order('created_at DESC')
   end
   
   def new
@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to item_path(@item.id)
     else
-      render :edit
+      redirect_to edit_item_path
     end
   end
 
@@ -59,4 +59,6 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+
+  
 end

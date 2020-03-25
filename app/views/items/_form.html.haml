@@ -1,6 +1,6 @@
 .n__container
   .n__logo
-    = link_to image_tag('logo.png', :width => '170', :height => '60'), ""
+    = link_to image_tag('logo.png', :width => '170', :height => '60'), root_path
       
   .n__form__container
     =form_for @item do |f|
@@ -8,26 +8,18 @@
         .n__image__container
           %p.message 商品出品画像（必須）
           %p.message 最大5枚までアップロード出来ます
-          #image-box
-            #previews
-              -if @item.persisted?
-                -@item.images.each_with_index do |image, i|
-                  =image_tag image.src.url, data: { index: i }, width: "100", height: '100'
-            = f.fields_for :images do |image|
-              .js-file_group{"data-index": "#{image.index}"}
-                = image.file_field :src, class: 'js-file' 
-                %br/
-                %span.js-remove 
-                  削除
-              -if @item.persisted?
-                = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
-            -if @item.persisted?
-              .js-file_group{"data-index" => "#{@item.images.count}"}
-                = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
-                %span.js-remove 
-                  削除
-
-
+          .post__drop__box__container
+            .prev-content
+            .label-content
+              %label{for: "item_images_attributes_0_src", class: "label-box", id: "label-box--0"}
+                %pre.label-box__text-visible クリックしてファイルをアップロード
+            .hidden-content
+              = f.fields_for :images do |i|
+                = i.file_field :src, class: "hidden-field"
+                %input{class:"hidden-field", type: "file", name: "item[images_attributes][1][src]", id: "item_images_attributes_1_src" }
+                %input{class:"hidden-field", type: "file", name: "item[images_attributes][2][src]", id: "item_images_attributes_2_src" }
+                %input{class:"hidden-field", type: "file", name: "item[images_attributes][3][src]", id: "item_images_attributes_3_src" }
+                %input{class:"hidden-field", type: "file", name: "item[images_attributes][4][src]", id: "item_images_attributes_4_src" }
         .n__item__container
           %p.message 商品名（必須）
           = f.text_field :name, class: "name-box",  placeholder: "商品名（必須 40文字まで)"
@@ -62,10 +54,10 @@
         .button
           =f.submit "出品する", class: "exhibition"
         .back
-          = link_to "もどる", "#"
+          = link_to "もどる", root_path
       .n__attention__container
         %p.message 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
   .n__end__logo__container
     .n__end__logo__container__end__logo
-      = link_to image_tag('logo.png', :width => '170', :height => '60'), "#"
+      = link_to image_tag('logo.png', :width => '170', :height => '60'), root_path
       %p ©️Frema.inc 
