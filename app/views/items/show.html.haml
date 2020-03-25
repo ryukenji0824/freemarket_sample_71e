@@ -1,23 +1,8 @@
 
-= render partial: 'layouts/header', locals: { header: @header }
-- @item.images.each do |image|
-  = image_tag image.src.url
-= @item.user.nickname
-= @item.name
-= @item.description
-= @item.price
-= @item.condition
-= @item.wait
-= @item.postage
-= @item.size
-= @item.category.name
-= @item.brand.name
-= @item.prefecture.name
-= link_to '編集', edit_item_path(@item)
-= link_to '削除', item_path(@item), method: :delete
-
 
 .d-header
+  = render partial: 'layouts/header', locals: { header: @header }
+
 .d-main
   .d-showMain
     .d-content
@@ -26,16 +11,15 @@
           =@item.name
         .d-itemBox__body
           -# 画像をDBから取得できるよう編集予定
+          
           %ul
             %li
-              = image_tag  "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png"
+              = image_tag @item.images[0].src.url
               %ul
-                %li
-                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", :width => "75", :height => "75"
-                %li
-                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/11/a005.png", :width => "75", :height => "75"
-                %li
-                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/12/a006.png", :width => "75", :height => "75"
+                - @item.images.each do |image|
+                  %li
+                    = image_tag image.src.url, :width => "75", :height => "75"
+                  
 
         .d-itemBox__price
           ¥
@@ -54,15 +38,15 @@
                 %th 出品者
                 %td
                   -#便宜的にbrand_idを使用。user_idで名前を取得できるよう設定予定
-                  =@item.brand_id
+                  = @item.user.nickname
               %tr
                 %th カテゴリー
                 %td.d-table--blue
-                  =@item.category_id
+                  =@item.category.name
               %tr
                 %th ブランド
                 %td 
-                  =@item.brand_id
+                  =@item.brand.name
               %tr
                 %th 商品のサイズ
                 %td 
@@ -78,7 +62,7 @@
               %tr
                 %th 発送元の地域
                 %td.d-table--blue
-                  hoge
+                  = @item.prefecture.name
               %tr
                 %th 発送日の目安
                 %td 
@@ -100,14 +84,11 @@
               売り切れました
           -elsif user_signed_in? && current_user.id == @item.brand_id
             %li
-              %button.d-itemChangeBox__btnList__editBtn
-                商品の編集
-                -# =link_to "商品の編集", "/items/#{item.id}/edit", methiod: :get
+              = button_to "商品の編集", edit_item_path(@item), id: "d-edit", method: :get
             or
             %li
-              %button.d-itemChangeBox__btnList__deleteBtn
-                この商品を削除する
-                -# =link_to "この商品を削除する", "/items/#{item.id}", method: :delete
+              = button_to "この商品を削除する", item_path(@item), method: :delete, data: {confirm: "削除しますか？"}
+
           -else
             %li
               %button.d-itemChangeBox__btnList__buyBtn
@@ -156,9 +137,5 @@
       =link_to "カテゴリをもっと見る"
       
 .d-footer
-  今すぐ無料ダウンロード
-  FURIMA
-  ここはフッターです
-
 
 
