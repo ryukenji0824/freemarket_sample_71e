@@ -1,7 +1,14 @@
 class CommentsController < ApplicationController
   def create
     @comment = Comment.create(comment_params)
-    redirect_to item_path(@comment.item.id)
+    if @comment.save
+      # 保存に成功した時の処理
+      redirect_to item_path(@comment.item.id), notice: "コメントが投稿されました"
+    else
+      # 保存に失敗した時の処理
+      redirect_to item_path(@comment.item.id), notice: "コメントを入力してください"
+    end
+    
   end
 
   def show
