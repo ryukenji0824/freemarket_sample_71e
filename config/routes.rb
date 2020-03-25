@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   end
   root 'posts#index'
   resources :users,     only: [:show, :index, :edit]
-  resources :items
+  resources :items do
+    resources :comments
+  end
   resources :addresses, only: [:edit]
   resources :cards, only: [:new, :edit]
 
