@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20200325085315) do
     t.text     "text",       limit: 65535, null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.index ["item_id"], name: "b", using: :btree
     t.index ["user_id", "item_id"], name: "index_comments_on_user_id_and_item_id", using: :btree
   end
 
@@ -117,6 +118,8 @@ ActiveRecord::Schema.define(version: 20200325085315) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "cards", "users"
+  add_foreign_key "comments", "items", name: "b"
+  add_foreign_key "comments", "users", name: "a"
   add_foreign_key "images", "items"
   add_foreign_key "items", "users"
 end
