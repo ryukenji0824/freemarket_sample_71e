@@ -58,6 +58,11 @@
   .field
     = f.label "性別"
     %br/
-    = f.text_field :gender, autofocus: true, autocomplete: "gender"
-  .actions
+    = f.radio_button :gender, 1 
+    男性
+    = f.radio_button :gender, 2
+    女性
+    = f.radio_button :gender, 3
+    未選択
+  .actions 
     = f.submit "住所登録画面へ"
