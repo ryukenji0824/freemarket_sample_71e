@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   def create
-    @comment = Comment.create(comment_params)
+    @comment = Comment.new(comment_params)
     if @comment.save
       # 保存に成功した時の処理
       redirect_to item_path(@comment.item.id), notice: "コメントが投稿されました"
@@ -9,10 +9,6 @@ class CommentsController < ApplicationController
       redirect_to item_path(@comment.item.id), notice: "コメントを入力してください"
     end
     
-  end
-
-  def show
-   
   end
 
   private
