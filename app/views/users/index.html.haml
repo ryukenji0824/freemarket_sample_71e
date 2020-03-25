@@ -1,0 +1,12 @@
+= link_to edit_user_registration_path(current_user.id)  do
+  ユーザー登録情報の変更
+= link_to edit_user_path(current_user.id)  do
+  プロフィールの変更
+= link_to edit_address_path(current_user.id)  do
+  配送先情報の変更
+- if @user.card.present?
+  = link_to edit_card_path(current_user.id)  do
+    お支払い情報の変更
+- else
+  = link_to new_card_path(current_user.id)  do
+    お支払い情報の登録

@@ -1,0 +1,28 @@
+%h2
+  プロフィールの変更
+= form_for @user do |f|
+  .field
+    = f.label "ニックネーム"
+    %br/
+    = f.text_field :nickname, autofocus: true, autocomplete: "nickname"
+  .field
+    = f.label "自己紹介"
+    %br/
+    = f.text_area :introduction, autofocus: true, autocomplete: "introduction"
+  .field
+    = f.label "パスワード"
+    - if @minimum_password_length
+      %em
+        (7 characters minimum)
+    %br/
+    = f.password_field :password, autocomplete: "new-password"
+  .field
+    = f.label "パスワード（確認用）"
+    - if @minimum_password_length
+      %em
+        (7 characters minimum)
+    %br/
+    = f.password_field :password_confirmation, autocomplete: "password_confirmation"
+  .actions
+    = f.submit "更新する"
+= link_to "戻る", :back

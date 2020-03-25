@@ -32,13 +32,14 @@ Things you may want to cover:
 |first_name_kana|string|null: false|
 |nickname|string|null: :false|
 |e-mail|string|null: ：false|
-|number|integer|null: :false|
+|number|string|null: :false|
 |password|string|null: :false|
 |password_confirmation|string|null: :false|
 |gender|integer|null: :false|
 |year|integer|null: :false|
 |month|integer|null: :false|
 |day|integer|null: :false|
+|introduction|text||
 
 ## Association
 has_many :cards
@@ -109,24 +110,30 @@ add_index: [:user_id, :item_id]
 ## itemsテーブル
 |Column|Type|Options|
 |:------|:----|:-------|
-|name|string|null:　：false|
-|description|text||
-|price|integer|null:　：false|
+|user_id|integer|foreign_key: true|
+|name|string|null:：false|
+|description|text|null: :false|
+|price|integer|null:：false|
 |buyer_id|integer||
 |size|string||
 |condition|string|null: :false|
 |wait|string|null: :false|
 |postage|integer|null: :false|
-|category_id|integer|null: :false, foregin_key: :true|
-|brand_id|integer|null: :false, foregin_key: :true|
+|category_id|integer|null: :false|
+|brand_id|integer|null: :false|
+|prefecture_id|integer|null: :false|
 
 ## Association
-belongs_to :user
+belongs_to :user, optional: true
 has_many :comments
 has_many :images
 belongs_to :brand
 belongs_to :category
-
+has_many :images, dependent: :destroy
+accepts_nested_attributes_for :images, allow_destroy: true
+belongs_to_active_hash :prefecture
+belongs_to_active_hash :category
+belongs_to_active_hash :brand
 ## index
 add_index: [:name, :price]
 
@@ -136,11 +143,11 @@ add_index: [:name, :price]
 ## imagesテーブル
 |Column|Type|Options|
 |:------|:----|:-------|
-|image|text|null: false|
+|src|string|null: false|
 |item_id|integer|null: false, foreign_key: true|
 
 ## Association
-belongs_to :item
+belongs_to :item, optional: true
 
 
 

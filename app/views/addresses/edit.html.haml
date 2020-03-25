@@ -1,6 +1,6 @@
-%h2 住所登録
+%h2
+  プロフィールの変更
 = form_for @address do |f|
-  = render "devise/shared/error_messages", resource: @address
   .field
     = f.label "名字"
     %br/
@@ -42,4 +42,5 @@
     %br/
     = f.text_field :number, autofocus: true, autocomplete: "number"
   .actions
-    = f.submit "登録"
+    = f.submit "更新する"
+= link_to "戻る", users_path(@user.id)
