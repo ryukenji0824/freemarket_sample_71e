@@ -92,9 +92,8 @@
           -else
             %li
               %button.d-itemChangeBox__btnList__buyBtn
-                購入画面にすすむ
-                -# = link_to "購入画面に進む", "/"
-      
+                = link_to purchase_index_path(@item) do
+                  購入画面に進む
       .d-commentBox
         .d-comment__list
           -# コメント機能実装時編集
