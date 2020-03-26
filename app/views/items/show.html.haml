@@ -92,7 +92,7 @@
           -else
             %li
               %button.d-itemChangeBox__btnList__buyBtn
-                = link_to purchase_index_path(@item) do
+                = link_to item_purchase_index_path(@item.id) do
                   購入画面に進む
       .d-commentBox
         .d-comment__list
