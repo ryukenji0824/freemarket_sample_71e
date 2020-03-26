@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:update, :edit, :show, :destroy]
-  
+  before_action :set_item, only: [:update, :edit, :destroy]
+  before_action :move_to_root, except: [:index, :show]
   def index
     @items = Item.includes(:images).order('created_at DESC')
   end
@@ -20,9 +20,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-    @item = Item.includes(:images)
-  end
+  
 
   def edit
   end  
@@ -36,7 +34,6 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
     if @item.destroy
       redirect_to items_path, notice: "商品を削除しました"
     else
@@ -45,6 +42,7 @@ class ItemsController < ApplicationController
   end
   
   def show
+    @item = Item.includes(:images)
     @item = Item.find(params[:id])
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
@@ -58,6 +56,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def move_to_root
+    redirect_to root_path unless user_signed_in?
   end
 
   
