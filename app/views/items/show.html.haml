@@ -9,18 +9,18 @@
       .d-itemBox
         .d-itemBox__name
           =@item.name
-        .d-itemBox__body
-          -# 画像をDBから取得できるよう編集予定
-          
+        .d-itemBox__body          
           %ul
             %li
-              = image_tag @item.images[0].src.url
+              = image_tag @item.images[0].src.url, class:"firstImage"
+              -if @item.buyer_id.present?
+                .d-itemBox__body--triangle
+                .d-itemBox__body__soldout
+                  SOLD
               %ul
                 - @item.images.each do |image|
                   %li
                     = image_tag image.src.url, :width => "75", :height => "75"
-                  
-
         .d-itemBox__price
           ¥
           =@item.price
@@ -37,7 +37,6 @@
               %tr
                 %th 出品者
                 %td
-                  -#便宜的にbrand_idを使用。user_idで名前を取得できるよう設定予定
                   = @item.user.nickname
               %tr
                 %th カテゴリー
@@ -82,7 +81,7 @@
           -if @item.buyer_id.present?
             %li.d-itemChangeBox__btnList__soldOutNotice
               売り切れました
-          -elsif user_signed_in? && current_user.id == @item.brand_id
+          -elsif user_signed_in? && current_user.id == @item.user_id
             %li
               = button_to "商品の編集", edit_item_path(@item), id: "d-edit", method: :get
             or
@@ -95,36 +94,37 @@
                 = link_to item_purchase_index_path(@item.id) do
                   購入画面に進む
       .d-commentBox
-        .d-comment__list
-          -# コメント機能実装時編集
-          -# - if @comments
-          -#   - @comments.each do |comment|
-          -#     = link_to comment.user.name, "/users/#{comment.user_id}"
-          -#     = comment.text
+        - if @comments
+          - @comments.each do |comment|
+            .d-commentBox__list
+              .d-commentBox__list__icon
+                =icon('fa','user')
+              .d-commentBox__list__content
+                .d-commentBox__list__content__name
+                  = link_to comment.user.nickname, "/users/#{comment.user_id}"
+                .d-commentBox__list__content__message
+                  = comment.text
+                .d-commentBox__list__content__date
+                  = comment.updated_at
 
         -if @item.buyer_id.present? && user_signed_in?
-          -# 便宜的に@itemを当てていますが、@commentが入る予定です。:nameも：textだと思います
-          =form_for @item do |f|
-            = f.text_area :name, disabled: true
-          .d-noticeMsg
-            %p
-              相手のことを考え丁寧なコメントを心がけましょう。
-              %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          %br
-          =button_tag type: 'submit',class:'d-commentBtn', disabled: true do
-            売り切れのためコメントできません
+          =form_for [@item, @comment] do |f|
+            = f.text_area :text, disabled: true
+            .d-noticeMsg
+              %p
+                相手のことを考え丁寧なコメントを心がけましょう。
+                %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            %br
+            = f.submit "売り切れのためコメントできません", class: "d-commentBtn", disabled: true
         -elsif user_signed_in?
-          -# 便宜的に@itemを当てていますが、@commentが入る予定です。:nameも：textだと思います
-          =form_for @item do |f|
-            = f.text_area :name
-          .d-noticeMsg
-            %p
-              相手のことを考え丁寧なコメントを心がけましょう。
-              %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          %br
-          =button_tag type: 'submit',class:'d-commentBtn' do
-            = icon('fa','comment')
-            コメントする
+          =form_for [@item, @comment] do |f|
+            = f.text_area :text
+            .d-noticeMsg
+              %p
+                相手のことを考え丁寧なコメントを心がけましょう。
+                %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            %br
+            = f.submit "コメントする", class: "d-commentBtn"
         -else
 
     %ur.d-links

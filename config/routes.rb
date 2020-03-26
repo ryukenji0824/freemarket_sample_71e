@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     post 'addresses', to: 'users/registrations#create_address'
   end
   root 'posts#index'
+
   resources :users,     only: [:show, :index, :edit, :update]
   resources :items do
     resources :purchase, only: [:index] do
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
         get 'done', to: 'purchase#done'
       end
     end
+    resources :comments, only: :create
   end
   resources :addresses, only: [:edit, :update]
   resources :cards, only: [:new, :show, :destroy] do
@@ -24,6 +26,5 @@ Rails.application.routes.draw do
       post 'show', to: 'cards#show'
       post 'pay', to: 'cards#pay'
     end
-  end
-
+  end  
 end
