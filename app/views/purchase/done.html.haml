@@ -1,3 +1,8 @@
-%h2 購入が完了しました！
-%p Apple MacBook Pro 13インチ
-%p ¥135,000(送料込み)
+= render partial: 'layouts/header', locals: { header: @header }
+.after-sign-up
+  .after-sign-up_content
+    .after-sign-up_content_box
+      %h1.after-sign-up_content_box_message 購入が完了しました
+      .after-sign-up_content_box_image
+      %p.after-sign-up_content_box_p 引き続きお買い物をお楽しみください
+= render partial: 'layouts/footer', locals: { footer: @footer }
