@@ -11,11 +11,10 @@ Rails.application.routes.draw do
   resources :users,     only: [:show, :index, :edit, :update]
   resources :items
   resources :addresses, only: [:edit, :update]
-  resources :cards, only: [:new, :show] do
+  resources :cards, only: [:new, :show, :destroy] do
     collection do
       post 'show', to: 'cards#show'
       post 'pay', to: 'cards#pay'
-      post 'delete', to: 'cards#delete'
     end
   end
 
