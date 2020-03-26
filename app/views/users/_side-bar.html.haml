@@ -16,9 +16,9 @@
             配送先情報の変更 >
       %li
         - if @user.card.present?
-          = link_to edit_card_path(current_user.id)  do
+          = link_to cards_path(current_user.id)  do
             .ui__wrapper__side-bar__contents__content
-              お支払い情報の変更 >
+              お支払い情報の確認、削除 >
         - else
           = link_to new_card_path(current_user.id)  do
             .ui__wrapper__side-bar__contents__content
@@ -27,3 +27,6 @@
         = link_to user_path(current_user.id) do
           .ui__wrapper__side-bar__contents__content
             ユーザートップ >
+
+   
+
