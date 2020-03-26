@@ -1,12 +1,17 @@
-= link_to edit_user_registration_path(current_user.id)  do
-  ユーザー登録情報の変更
-= link_to edit_user_path(current_user.id)  do
-  プロフィールの変更
-= link_to edit_address_path(current_user.id)  do
-  配送先情報の変更
-- if @user.card.present?
-  = link_to cards_path(current_user.id)  do
-    お支払い情報の確認、削除
+= render partial: 'layouts/header', locals: { header: @header }
+.ui__wrapper
+  = render "side-bar"
+  = render "main-bar"
+      
+= render partial: 'layouts/footer', locals: { footer: @footer }
+- if user_signed_in?
+  %a(href="/items/new")
+    .sellBtn
+      %span.sellBtn__text 出品する
+      = image_tag 'icon_camera.png', alt: '', height: '', width: '', class: 'sellBtn__icon'
 - else
-  = link_to new_card_path(current_user.id)  do
-    お支払い情報の登録
+  %a(href="/users/sign_in")
+    .sellBtn
+      %span.sellBtn__text ログインして出品する
+      = image_tag 'icon_camera.png', alt: '', height: '', width: '', class: 'sellBtn__icon'
+
