@@ -16,7 +16,7 @@
           .t__head__bar__search__box-brandブランド
       .t__head__bar__search__select
         -if user_signed_in?
-          = link_to user_path(current_user),id: "logBtn" do
+          = link_to users_path(current_user),id: "logBtn" do
             .t__head__bar__search__select-login マイページ
           = link_to destroy_user_session_path, method: :delete, id: "newBtn" do
             .t__head__bar__search__select-login ログアウト

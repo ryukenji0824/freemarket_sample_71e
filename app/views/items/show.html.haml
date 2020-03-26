@@ -36,8 +36,11 @@
             %tbody
               %tr
                 %th 出品者
-                %td
-                  = @item.user.nickname
+                %td.d-table--blue
+                  
+                  = link_to @item.user.nickname, "/users/#{@item.user_id}"
+                  
+                 
               %tr
                 %th カテゴリー
                 %td.d-table--blue
