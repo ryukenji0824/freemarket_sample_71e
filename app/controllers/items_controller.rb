@@ -14,9 +14,9 @@ class ItemsController < ApplicationController
     
     @item = Item.create(item_params)
     if @item.save
-      redirect_to items_path
+      redirect_to items_path, notice: "出品しました"
     else
-      redirect_to new_item_path
+      redirect_to new_item_path, notice: "出品できません。入力必須項目を確認してください"
     end
   end
 
@@ -29,18 +29,18 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      redirect_to item_path(@item.id)
+      redirect_to item_path(@item.id), notice: "商品情報を編集しました"
     else
-      redirect_to edit_item_path
+      redirect_to edit_item_path, notice: "編集できません。入力必須項目を確認してください"
     end
   end
 
   def destroy
     @item = Item.find(params[:id])
     if @item.destroy
-      redirect_to items_path
+      redirect_to items_path, notice: "商品を削除しました"
     else
-      redirect_to item_path
+      redirect_to item_path, notice: "商品を削除できませんでした"
     end
   end
   
