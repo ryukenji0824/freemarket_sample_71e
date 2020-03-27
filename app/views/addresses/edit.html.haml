@@ -1,2 +1,63 @@
-%h1 Addresses#edit
-%p Find me in app/views/addresses/edit.html.haml
+= render partial: 'layouts/header', locals: { header: @header }
+.ua__wrapper
+  = render "users/side-bar"
+  .ua__wrapper__main-bar
+    .ua__wrapper__main-bar__contents
+      %h2.ua__wrapper__main-bar__contents__title
+        配送先情報の変更
+      = form_for @address do |f|
+        .ua__wrapper__main-bar__contents__content
+          .ua__wrapper__main-bar__contents__content-flex
+            .ua__wrapper__main-bar__contents__content-flex__content
+              = f.label "名字" , class: "content-title"
+              %span 必須
+              %br/
+              = f.text_field :family_name, autofocus: true, autocomplete: "family_name", placeholder: "例）山田"
+            .ua__wrapper__main-bar__contents__content-flex__content
+              = f.label "名前", class: "content-title"
+              %span 必須
+              %br/
+              = f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "例）花子"
+          .ua__wrapper__main-bar__contents__content-flex
+            .ua__wrapper__main-bar__contents__content-flex__content
+              = f.label "ミョウジ", class: "content-title"
+              %span 必須
+              %br/
+              = f.text_field :family_name_kana, autofocus: true, autocomplete: "family_name_kana", placeholder: "例）ヤマダ"
+            .ua__wrapper__main-bar__contents__content-flex__content
+              = f.label "ナマエ", class: "content-title"
+              %span 必須
+              %br/
+              = f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", placeholder: "例）タロウ"
+        .ua__wrapper__main-bar__contents__content
+          = f.label "郵便番号", class: "content-title"
+          %span 必須
+          %br/
+          = f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", placeholder: "例）000-0000"
+        .ua__wrapper__main-bar__contents__content
+          = f.label "都道府県", class: "content-title"
+          %span 必須
+          %br/
+          = f.text_field :city, autofocus: true, autocomplete: "city", placeholder: "例）秋田県"
+        .ua__wrapper__main-bar__contents__content
+          = f.label "市町村", class: "content-title"
+          %span 必須
+          %br/
+          = f.text_field :local, autofocus: true, autocomplete: "local", placeholder: "例）秋田市 大住"
+        .ua__wrapper__main-bar__contents__content
+          = f.label "番地", class: "content-title"
+          %span 必須
+          %br/
+          = f.text_field :block, autofocus: true, autocomplete: "block", placeholder: "例）0-0-0"
+        .ua__wrapper__main-bar__contents__content
+          = f.label "マンション名", class: "content-title"
+          %br/
+          = f.text_field :building, autofocus: true, autocomplete: "building", placeholder: "例）六本木ヒルズ"
+        .ua__wrapper__main-bar__contents__content
+          = f.label "連絡先", class: "content-title"
+          %span 必須
+          %br/
+          = f.text_field :number, autofocus: true, autocomplete: "number", placeholder: "例）000-0000-0000"
+        .ua__wrapper__main-bar__contents__content
+          = f.submit "更新する", class: "update-btn"
+          = link_to "もどる", users_path(current_user), class: "back-btn"

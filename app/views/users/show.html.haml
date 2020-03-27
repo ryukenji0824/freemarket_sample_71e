@@ -4,15 +4,21 @@
     .u_profile 
       .u_profile_box
         - if user_signed_in? && current_user.id == @user.id
-          = link_to users_path(@user.id), class: "u_profile_box_btn" do
-            =image_tag "member_photo_noimage_thumb.png",size: "180x180" ,class: ".u_profile_box_btn_image"
+          = link_to users_path(current_user), class: "u_profile_box_btn" do
+            - if @user.user_image?
+              = image_tag @user.user_image.url, class: "user_image"
+            - else
+              =image_tag "member_photo_noimage_thumb.png",size: "180x180" 
             %h2.u_profile_box_btn_name #{@user.nickname}
           .u_profile_box_grade
             %span.u_profile_box_grade-number 評価数 120
             %span.u_profile_box_grade-amount 出品数 100
         - else
           = link_to "", class: "u_profile_box_btn" do
-            =image_tag "member_photo_noimage_thumb.png",size: "180x180" ,class: ".u_profile_box_btn_image"
+            - if @user.user_image?
+              = image_tag @user.user_image.url, class: "user_image"
+            - else
+              =image_tag "member_photo_noimage_thumb.png",size: "200x180" 
             %h2.u_profile_box_btn_name #{@user.nickname}
           .u_profile_box_grade
             %span.u_profile_box_grade-number 評価数 120
@@ -30,11 +36,7 @@
           .u_detail_review-box_each_bad_number 0
       .u_detail_content
         %p.u_detail_content_comment
-          ここに自己紹介文がはいります
-          %br
-          こんなかんじ
-          %br
-          実際にはデータベースから値をとるのでbrタグは使いません
+          = simple_format @user.introduction
     .u_sns
       %ul.u_sns-box
         %li.u_sns-box_facebook
@@ -49,15 +51,22 @@
     .u_item-box
       %h2.u_item-box_user-name この出品者の商品
       .u_item-box_container
-        .u_item-box_container_item
-          = link_to "#",class:".u_item-box_container_item_link" do
-            %figure.u_item-box_container_item_link-box
-              = image_tag "pict-reason-02.jpg", class: "u_item-box_container_item_link-box_image"
-            .u_item-box_container_item_link_body
-              %h3.u_item-box_container_item_link_body-name スマホと手のセット
-              .u_item-box_container_item_link_body_under
-                .u_item-box_container_item_link_body_under-price ￥99,999
-                .u_item-box_container_item_link_body_under-favorite
-                  %i.far.fa-heart.u_item-box_container_item_link_body_under-favorite_icon
-                  %span.u_item-box_container_item_link_body_under-favorite_number 12
+        - @items.each do |item|
+          .u_item-box_container_item
+            = link_to item_path(item.id),class:".u_item-box_container_item_link" do
+              .u_item-box_container_item_link-box
+                = image_tag item.images[0].src.url, class: "first-Image"
+                -if item.buyer_id.present?
+                  .d-itemBox__body--triangle
+                  .d-itemBox__body__soldout
+                    SOLD
+              .u_item-box_container_item_link_body
+                %h3.u_item-box_container_item_link_body-name
+                  = item.name
+                .u_item-box_container_item_link_body_under
+                  .u_item-box_container_item_link_body_under-price
+                    = item.price
+                  .u_item-box_container_item_link_body_under-favorite
+                    %i.far.fa-heart.u_item-box_container_item_link_body_under-favorite_icon
+                    %span.u_item-box_container_item_link_body_under-favorite_number 12
 = render partial: 'layouts/footer', locals: { footer: @footer }

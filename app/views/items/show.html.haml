@@ -1,42 +1,26 @@
 
-= render partial: 'layouts/header', locals: { header: @header }
-- @item.images.each do |image|
-  = image_tag image.src.url
-= @item.user.nickname
-= @item.name
-= @item.description
-= @item.price
-= @item.condition
-= @item.wait
-= @item.postage
-= @item.size
-= @item.category.name
-= @item.brand.name
-= @item.prefecture.name
-= link_to '編集', edit_item_path(@item)
-= link_to '削除', item_path(@item), method: :delete
-
 
 .d-header
+  = render partial: 'layouts/header', locals: { header: @header }
+
 .d-main
   .d-showMain
     .d-content
       .d-itemBox
         .d-itemBox__name
           =@item.name
-        .d-itemBox__body
-          -# 画像をDBから取得できるよう編集予定
+        .d-itemBox__body          
           %ul
             %li
-              = image_tag  "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png"
+              = image_tag @item.images[0].src.url, class:"firstImage"
+              -if @item.buyer_id.present?
+                .d-itemBox__body--triangle
+                .d-itemBox__body__soldout
+                  SOLD
               %ul
-                %li
-                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", :width => "75", :height => "75"
-                %li
-                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/11/a005.png", :width => "75", :height => "75"
-                %li
-                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/12/a006.png", :width => "75", :height => "75"
-
+                - @item.images.each do |image|
+                  %li
+                    = image_tag image.src.url, :width => "75", :height => "75"
         .d-itemBox__price
           ¥
           =@item.price
@@ -52,17 +36,19 @@
             %tbody
               %tr
                 %th 出品者
-                %td
-                  -#便宜的にbrand_idを使用。user_idで名前を取得できるよう設定予定
-                  =@item.brand_id
+                %td.d-table--blue
+                  
+                  = link_to @item.user.nickname, "/users/#{@item.user_id}"
+                  
+                 
               %tr
                 %th カテゴリー
                 %td.d-table--blue
-                  =@item.category_id
+                  =@item.category.name
               %tr
                 %th ブランド
                 %td 
-                  =@item.brand_id
+                  =@item.brand.name
               %tr
                 %th 商品のサイズ
                 %td 
@@ -78,7 +64,7 @@
               %tr
                 %th 発送元の地域
                 %td.d-table--blue
-                  hoge
+                  = @item.prefecture.name
               %tr
                 %th 発送日の目安
                 %td 
@@ -98,67 +84,66 @@
           -if @item.buyer_id.present?
             %li.d-itemChangeBox__btnList__soldOutNotice
               売り切れました
-          -elsif user_signed_in? && current_user.id == @item.brand_id
+          -elsif user_signed_in? && current_user.id == @item.user_id
             %li
-              %button.d-itemChangeBox__btnList__editBtn
-                商品の編集
-                -# =link_to "商品の編集", "/items/#{item.id}/edit", methiod: :get
+              = button_to "商品の編集", edit_item_path(@item), id: "d-edit", method: :get
             or
             %li
-              %button.d-itemChangeBox__btnList__deleteBtn
-                この商品を削除する
-                -# =link_to "この商品を削除する", "/items/#{item.id}", method: :delete
+              = button_to "この商品を削除する", item_path(@item), method: :delete, data: {confirm: "削除しますか？"}
+
           -else
             %li
               %button.d-itemChangeBox__btnList__buyBtn
-                購入画面にすすむ
-                -# = link_to "購入画面に進む", "/"
-      
+                = link_to item_purchase_index_path(@item.id) do
+                  購入画面に進む
       .d-commentBox
-        .d-comment__list
-          -# コメント機能実装時編集
-          -# - if @comments
-          -#   - @comments.each do |comment|
-          -#     = link_to comment.user.name, "/users/#{comment.user_id}"
-          -#     = comment.text
+        - if @comments
+          - @comments.each do |comment|
+            .d-commentBox__list
+              .d-commentBox__list__icon
+                =icon('fa','user')
+              .d-commentBox__list__content
+                .d-commentBox__list__content__name
+                  = link_to comment.user.nickname, "/users/#{comment.user_id}"
+                .d-commentBox__list__content__message
+                  = comment.text
+                .d-commentBox__list__content__date
+                  = comment.updated_at
 
         -if @item.buyer_id.present? && user_signed_in?
-          -# 便宜的に@itemを当てていますが、@commentが入る予定です。:nameも：textだと思います
-          =form_for @item do |f|
-            = f.text_area :name, disabled: true
-          .d-noticeMsg
-            %p
-              相手のことを考え丁寧なコメントを心がけましょう。
-              %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          %br
-          =button_tag type: 'submit',class:'d-commentBtn', disabled: true do
-            売り切れのためコメントできません
+          =form_for [@item, @comment] do |f|
+            = f.text_area :text, disabled: true
+            .d-noticeMsg
+              %p
+                相手のことを考え丁寧なコメントを心がけましょう。
+                %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            %br
+            = f.submit "売り切れのためコメントできません", class: "d-commentBtn", disabled: true
         -elsif user_signed_in?
-          -# 便宜的に@itemを当てていますが、@commentが入る予定です。:nameも：textだと思います
-          =form_for @item do |f|
-            = f.text_area :name
-          .d-noticeMsg
-            %p
-              相手のことを考え丁寧なコメントを心がけましょう。
-              %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          %br
-          =button_tag type: 'submit',class:'d-commentBtn' do
-            = icon('fa','comment')
-            コメントする
+          =form_for [@item, @comment] do |f|
+            = f.text_area :text
+            .d-noticeMsg
+              %p
+                相手のことを考え丁寧なコメントを心がけましょう。
+                %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            %br
+            = f.submit "コメントする", class: "d-commentBtn"
         -else
 
     %ur.d-links
       %li 
-        =link_to "<前の商品"
+        - if @item.next.present?
+          = link_to item_path(@item.next) do
+            <
+            = @item.next.name
       %li 
-        =link_to "後ろの商品>"
+        - if @item.previous.present?
+          = link_to item_path(@item.previous) do
+            = @item.previous.name
+            >
     .d-relatedItems
       =link_to "カテゴリをもっと見る"
       
 .d-footer
-  今すぐ無料ダウンロード
-  FURIMA
-  ここはフッターです
-
 
 

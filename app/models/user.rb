@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :items
+  
+  has_many :comments
 
   # バリデーション
   validates :nickname, :family_name, :first_name, :family_name_kana, :first_name_kana, :year, :month, :day, :number, :gender, :password_confirmation,  presence: true
@@ -15,7 +16,12 @@ class User < ApplicationRecord
   validates :family_name_kana,:first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/,
     message: "全角カナのみが使えます" }
 
+  # アソシエーション
+  has_many :items, dependent: :destroy
   has_one :address
   has_one :card
+
+  mount_uploader :user_image, ImageUploader
+  mount_uploader :user_bg_image, ImageUploader
 end
 

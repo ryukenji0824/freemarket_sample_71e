@@ -21,12 +21,12 @@
         text-align: center;
         &_btn{
           text-decoration: none;
-          &_image{
-            background-size: contain;
-            width: 180px;
-            height: 180px;
+          img.user_image {
+            width: 30%;
+            height: 30%;
+            border-radius: 50%;
             margin: 0 auto;
-            display: inline;
+            
           }
           &_name{
             margin: 8px 0 16px;
@@ -194,35 +194,47 @@
         color: black;
       }
       &_container{
-        width: auto;
-        overflow-x: auto;
-        overflow-y: hidden;
+        width: 100%;
+        background-color: #fff;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
         &_item{
-          position: relative;
-          background-color: #fff;
-          margin: 0 0 20px 10px;
-          display: block;
-          float: left;
-          width: 220px;
           height: 330px;
+          width: 200px;
+          margin: 10px;
+          border-radius: 2px;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.22);
+          border-top: solid 1px #5d627b;
           &_link{
-            display: block;
-            color: #333;
-            display: inline-block;
-            text-decoration: none;
+            height: 100%;
+            width: 100%;
             &-box{
-              width: 220px;
-              height: 220px;
+              width: 200px;
+              height: 200px;
               margin: 0;
-              &_image{
+              position: relative;
+              .first-Image{
+                width: 200px;
+                height: 200px;
+                
+              }
+              .d-itemBox__body--triangle {
                 position: absolute;
                 top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                z-index: 1;
-                width: 220px;
-                height: 220px;
+                left: 0px;
+                border-bottom: 100px solid transparent;
+                border-left: 100px solid red;
+              }
+              .d-itemBox__body__soldout {
+                transform: rotate(-45deg);
+                position: absolute;
+                top: 20px;
+                left: 10px;
+                color: #ffffff;
+                font-weight: bold;
+                font-size: 20px;
               }
             }
             &_body{

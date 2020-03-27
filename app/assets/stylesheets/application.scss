@@ -14,13 +14,20 @@
  *= require_self
  */
  @import "reset.scss";
+ @import "config/colors";
  @import "posts.scss";
  @import "user_page.scss";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
  @import 'item_new.scss';
- @import 'item_exhibition.scss';
+ @import 'item_index.scss';
  @import 'item_show.scss';
  @import 'after_sign_up.scss';
+ @import 'confirmation.scss';
+ @import "modules/flash";
+ @import "user_index.scss";
+ @import "new_card.scss";
+ @import "edit_card.scss";
+
 
 

@@ -87,40 +87,6 @@
     %h2 ピックアップカテゴリー
   .t__pickup__new
     %h3 新規投稿商品
-    .t__pickup__new--item
-      .u_item-box_container_item
-        = link_to "#",class:".u_item-box_container_item_link" do
-          %figure.u_item-box_container_item_link-box
-            = image_tag "pict-reason-02.jpg", class: "u_item-box_container_item_link-box_image"
-          .u_item-box_container_item_link_body
-            %h3.u_item-box_container_item_link_body-name スマホと手のセット
-            .u_item-box_container_item_link_body_under
-              .u_item-box_container_item_link_body_under-price ￥99,999
-              .u_item-box_container_item_link_body_under-favorite
-                %i.far.fa-heart.u_item-box_container_item_link_body_under-favorite_icon
-                %span.u_item-box_container_item_link_body_under-favorite_number 12
-      .u_item-box_container_item
-        = link_to "#",class:".u_item-box_container_item_link" do
-          %figure.u_item-box_container_item_link-box
-            = image_tag "pict-reason-02.jpg", class: "u_item-box_container_item_link-box_image"
-          .u_item-box_container_item_link_body
-            %h3.u_item-box_container_item_link_body-name スマホと手のセット
-            .u_item-box_container_item_link_body_under
-              .u_item-box_container_item_link_body_under-price ￥99,999
-              .u_item-box_container_item_link_body_under-favorite
-                %i.far.fa-heart.u_item-box_container_item_link_body_under-favorite_icon
-                %span.u_item-box_container_item_link_body_under-favorite_number 12
-      .u_item-box_container_item
-        = link_to "#",class:".u_item-box_container_item_link" do
-          %figure.u_item-box_container_item_link-box
-            = image_tag "pict-reason-02.jpg", class: "u_item-box_container_item_link-box_image"
-          .u_item-box_container_item_link_body
-            %h3.u_item-box_container_item_link_body-name スマホと手のセット
-            .u_item-box_container_item_link_body_under
-              .u_item-box_container_item_link_body_under-price ￥99,999
-              .u_item-box_container_item_link_body_under-favorite
-                %i.far.fa-heart.u_item-box_container_item_link_body_under-favorite_icon
-                %span.u_item-box_container_item_link_body_under-favorite_number 12
 .t__pickup
   .t__pickup__category
     %h2 ピックアップブランド
@@ -172,7 +138,13 @@
         %a(id="gBtn" href="http://google.co.jp")
           = image_tag 'google-play.png', alt: '', class: 'google'
 = render partial: 'layouts/footer', locals: { footer: @footer }
-%a(href="/items/new")
-  .sellBtn
-    %span.sellBtn__text 出品する
-    = image_tag 'icon_camera.png', alt: '', height: '', width: '', class: 'sellBtn__icon'
+- if user_signed_in?
+  %a(href="/items/new")
+    .sellBtn
+      %span.sellBtn__text 出品する
+      = image_tag 'icon_camera.png', alt: '', height: '', width: '', class: 'sellBtn__icon'
+- else
+  %a(href="/users/sign_in")
+    .sellBtn
+      %span.sellBtn__text ログインして出品する
+      = image_tag 'icon_camera.png', alt: '', height: '', width: '', class: 'sellBtn__icon'
