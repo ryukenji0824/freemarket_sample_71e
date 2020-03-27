@@ -189,22 +189,35 @@
           width: 400px;
           margin: 0 auto;
           &__user {
-            img {
+            img.hidden {
               width: 70%;
               height: 70%;
-              border-radius: 70%;
               cursor: pointer;
               position: absolute;
-              top: 33px;
-              left: 63px;
+              top: 30px;
+              left: 60px;
+              display: none;
             }
             .avatar_present_img {
-              height: 150px;
-              width: 160px;
-              border-radius: 70%;
+              height: 170px;
+              width: 170px;
+              border-radius: 50%;
               position: absolute;
-              top: 43px;
-              left: 125px;
+              top: 30px;
+              left: 110px;
+              cursor: pointer;
+            }
+            img {
+              height: 170px;
+              width: 170px;
+              border-radius: 50%;
+              position: absolute;
+              top: 30px;
+              left: 110px;
+              cursor: pointer;
+              background-position: center center;
+              border: 3px solid #3ccAca;
+
             }
             input {
               display: none;
