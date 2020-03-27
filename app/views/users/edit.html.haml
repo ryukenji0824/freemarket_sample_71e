@@ -6,6 +6,12 @@
       %h2.ue__wrapper__main-bar__contents__title
         プロフィールの変更
       = form_for @user do |f|
+        - if @user.user_image?
+          = image_tag @user.user_image.url
+        - else
+          =image_tag "member_photo_noimage_thumb.png",size: "180x180" 
+        = f.file_field :user_image
+        
         .ue__wrapper__main-bar__contents__content
           = f.label "ニックネーム", class: "content-title"
           %br/
