@@ -21,12 +21,12 @@
         text-align: center;
         &_btn{
           text-decoration: none;
-          &_image{
-            background-size: contain;
-            width: 180px;
-            height: 180px;
+          img.user_image {
+            width: 30%;
+            height: 30%;
+            border-radius: 50%;
             margin: 0 auto;
-            display: inline;
+            
           }
           &_name{
             margin: 8px 0 16px;

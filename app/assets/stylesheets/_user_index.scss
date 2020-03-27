@@ -180,8 +180,34 @@
       &__content {
         height: 100%;
         padding-top: 10px;
-        padding-bottom: 30px;
+        padding-bottom: 10px;
         border-bottom: solid 1px #eee;
+        &__image {
+          background-image: url("background_mypage.jpeg");
+          position: relative;
+          height: 220px;
+          width: 400px;
+          margin: 0 auto;
+          &__user {
+            position: absolute;
+            top: 43px;
+            left: 117px;
+            img {
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+              cursor: pointer;
+            }
+            .no-image {
+              height: 150px;
+              width: 150px;
+            }
+            input {
+              display: none;
+              cursor: pointer;
+            }
+          }
+        }
         .content-title {
           font-size: 15px;
         }
@@ -195,6 +221,7 @@
           width: 100%;
           height: 100px;
           padding: 5px;
+          border-radius: 3px;
 
         }
         .update-btn {
