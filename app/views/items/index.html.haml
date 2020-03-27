@@ -18,6 +18,8 @@
     %h1 新着アイテム一覧
   .e__middle__container
     = render @items
+  .e__middle__page
+    = paginate(@items)
 = render partial: 'layouts/footer', locals: { footer: @footer }
 %a(href="/items/new")
   .sellBtn
