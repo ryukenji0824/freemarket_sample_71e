@@ -16,6 +16,9 @@ class UsersController < ApplicationController
 
   def update
     @user.update(update_params)
+    unless @user.update(update_params)
+      redirect_to edit_user_path(@user.id), notice: "出品できません。入力必須項目を確認してください"
+    end
     sign_in(:user, @user)
   end
 
