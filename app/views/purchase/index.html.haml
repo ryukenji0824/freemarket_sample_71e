@@ -35,8 +35,6 @@
           - else
             #{current_user.address.city}#{current_user.address.local}#{current_user.address.block}
       .c__container__confirm--row__submit
-        %p
-          この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
         = form_tag(action: :pay, method: :post) do
           %button.button 購入する
     .c__end__logo__container
