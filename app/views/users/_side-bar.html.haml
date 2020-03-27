@@ -5,7 +5,7 @@
       %li
         = link_to edit_user_registration_path(current_user.id)  do
           .ui__wrapper__side-bar__contents__content
-            ユーザー登録情報の変更 >
+            メールアドレス、パスワード変更 >
       %li
         = link_to edit_user_path(current_user.id)  do
           .ui__wrapper__side-bar__contents__content
@@ -24,9 +24,9 @@
             .ui__wrapper__side-bar__contents__content
               お支払い情報の登録 >
       %li
-        = link_to user_path(current_user.id) do
+        = link_to users_path(current_user.id) do
           .ui__wrapper__side-bar__contents__content
-            ユーザートップ >
+            出品した商品 >
 
    
 
