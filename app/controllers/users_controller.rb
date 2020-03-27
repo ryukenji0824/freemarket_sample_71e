@@ -4,9 +4,11 @@ class UsersController < ApplicationController
   before_action :set_user_current, only: :index
 
   def index
+    @items = @user.items
   end
 
   def show
+    @items = @user.items
   end
 
   def edit

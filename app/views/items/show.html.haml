@@ -36,8 +36,11 @@
             %tbody
               %tr
                 %th 出品者
-                %td
-                  = @item.user.nickname
+                %td.d-table--blue
+                  
+                  = link_to @item.user.nickname, "/users/#{@item.user_id}"
+                  
+                 
               %tr
                 %th カテゴリー
                 %td.d-table--blue
@@ -91,9 +94,8 @@
           -else
             %li
               %button.d-itemChangeBox__btnList__buyBtn
-                購入画面にすすむ
-                -# = link_to "購入画面に進む", "/"
-      
+                = link_to item_purchase_index_path(@item.id) do
+                  購入画面に進む
       .d-commentBox
         - if @comments
           - @comments.each do |comment|

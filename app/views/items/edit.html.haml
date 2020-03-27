@@ -1,6 +1,6 @@
 .n__container
   .n__logo
-    = link_to image_tag('/assets/logo.png', :width => '170', :height => '60'), ""
+    = link_to image_tag('logo.png', :width => '170', :height => '60'), root_path
       
   .n__form__container
     =form_for @item do |f|
@@ -19,7 +19,7 @@
                       .delete-btn
                         %span 削除
             .label-content
-              %label{for: "images_attributes_#{@item.images.length}_src", class: "label-box", id: "label-box--#{@item.images.length}"}
+              %label{for: "item_images_attributes_#{@item.images.length}_src", class: "label-box", id: "label-box--#{@item.images.length}"}
                 %pre.label-box__text-visible クリックしてファイルをアップロード
             .hidden-content
               =f.fields_for :images do |i|
@@ -59,12 +59,12 @@
               =f.number_field :price, placeholder: "0", type: "number", class:"price-box"
       .n__submit__container
         .button
-          =f.submit "商品情報を編集して、出品する", class: "exhibition"
+          =f.submit "商品情報を編集する", class: "exhibition"
         .back
           = link_to "編集しないで戻る", item_path(@item.id)
       .n__attention__container
         %p.message 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
   .n__end__logo__container
     .n__end__logo__container__end__logo
-      = link_to image_tag('/assets/logo.png', :width => '170', :height => '60'), "#"
+      = link_to image_tag('logo.png', :width => '170', :height => '60'), root_path
       %p ©️Frima.inc 
