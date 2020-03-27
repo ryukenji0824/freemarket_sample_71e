@@ -22,5 +22,6 @@ class User < ApplicationRecord
   has_one :card
 
   mount_uploader :user_image, ImageUploader
+  mount_uploader :user_bg_image, ImageUploader
 end
 
