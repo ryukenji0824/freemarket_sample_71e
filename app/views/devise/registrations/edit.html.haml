@@ -1,28 +1,40 @@
-%h2
-  ユーザー登録情報の変更
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label "メールアドレス"
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
-      Currently waiting confirmation for: #{resource.unconfirmed_email}
-  .field
-    = f.label "新しいパスワード"
-    %i 
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-    - if @minimum_password_length
-      %br/
-      %em
-        = @minimum_password_length
-        文字以上
-  .field
-    = f.label "新しいパスワード（確認用）"
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Update"
-= link_to "戻る", :back
+= render partial: 'layouts/header', locals: { header: @header }
+.ue__wrapper
+  = render "users/side-bar"
+  .ue__wrapper__main-bar
+    .ue__wrapper__main-bar__contents
+      %h2.ue__wrapper__main-bar__contents__title
+        メールアドレス、パスワードの変更
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .ue__wrapper__main-bar__contents__content
+          = f.label "メールアドレス", class: "content-title"
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "例）hoge@gmail.com"
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          %div
+            Currently waiting confirmation for: #{resource.unconfirmed_email}
+        .ue__wrapper__main-bar__contents__content
+          = f.label "新しいパスワード", class: "content-title"
+          %i 
+          %br/
+          = f.password_field :password, autocomplete: "new-password", placeholder: "英数字7字以上"
+          
+        .ue__wrapper__main-bar__contents__content
+          = f.label "新しいパスワード（確認用）", class: "content-title"
+          %br/
+          = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "英数字7字以上"
+        .ue__wrapper__main-bar__contents__content
+          = f.submit "変更する", class: "update-btn"
+          = link_to "もどる", users_path(current_user), class: "back-btn"
+= render partial: 'layouts/footer', locals: { footer: @footer }
+- if user_signed_in?
+  %a(href="/items/new")
+    .sellBtn
+      %span.sellBtn__text 出品する
+      = image_tag 'icon_camera.png', alt: '', height: '', width: '', class: 'sellBtn__icon'
+- else
+  %a(href="/users/sign_in")
+    .sellBtn
+      %span.sellBtn__text ログインして出品する
+      = image_tag 'icon_camera.png', alt: '', height: '', width: '', class: 'sellBtn__icon'
