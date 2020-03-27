@@ -8,10 +8,10 @@
       = form_for @user do |f|
         .ue__wrapper__main-bar__contents__content
           .ue__wrapper__main-bar__contents__content__image
-            .ue__wrapper__main-bar__contents__content__image__user
-              %label(for="user_user_image")
+            %label(for="user_user_image")
+              .ue__wrapper__main-bar__contents__content__image__user
+                %img#avatar_img_prev.hidden
                 - if @user.user_image.present?
-                  %img#avatar_img_prev.hidden
                   = image_tag @user.user_image.url, class: "avatar_present_img"
                 - else
                   =image_tag "member_photo_noimage_thumb.png", class: "avatar_present_img"
