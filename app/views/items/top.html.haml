@@ -10,10 +10,10 @@
           フリマアプリです
       .t__center__image__content-icon
         .t__center__image__content-icon-app
-          %a(id="aBtn" href="http://google.co.jp")
+          =link_to "http://google.co.jp", id: 'aBtn' do
             = image_tag 'apple-icon.png', alt: '', class: 'apple'
         .t__center__image__content-icon-google
-          %a(id="gBtn" href="http://google.co.jp")
+          =link_to "http://google.co.jp", id: 'gBtn' do
             = image_tag 'google-play.png', alt: '', class: 'google'
 
 .t__center__middle
@@ -54,10 +54,10 @@
         ほしかったあの商品に出会えるかもしれません。
   .t__center__middle__image-icon
     .t__center__middle-icon-app
-      %a(id="aBtn" href="http://google.co.jp")
+      =link_to "http://google.co.jp", id: 'aBtn' do
         = image_tag 'apple-icon.png', alt: '', class: 'apple'
     .t__center__middle-icon-google
-      %a(id="gBtn" href="http://google.co.jp")
+      =link_to "http://google.co.jp", id: 'gBtn' do
         = image_tag 'google-play.png', alt: '', class: 'google'
 .t__center__bottom
   .t__center__bottom__title 
@@ -85,66 +85,66 @@
 .t__pickup
   .t__pickup__category
     %h2 ピックアップカテゴリー
-  .t__pickup__new
     %h3 新規投稿商品
+  .t__pickup__index
+    .t__pickup__index__new
+      =render @items
+    .t__pickup__index__more
+      = link_to 'もっと見る>',items_path
 .t__pickup
   .t__pickup__category
     %h2 ピックアップブランド
-  .t__pickup__new
     %h3 アーカイバ
-    .t__pickup__new--item
-      .u_item-box_container_item
-        = link_to "#",class:".u_item-box_container_item_link" do
-          %figure.u_item-box_container_item_link-box
-            = image_tag "pict-reason-02.jpg", class: "u_item-box_container_item_link-box_image"
-          .u_item-box_container_item_link_body
-            %h3.u_item-box_container_item_link_body-name スマホと手のセット
-            .u_item-box_container_item_link_body_under
-              .u_item-box_container_item_link_body_under-price ￥99,999
-              .u_item-box_container_item_link_body_under-favorite
-                %i.far.fa-heart.u_item-box_container_item_link_body_under-favorite_icon
-                %span.u_item-box_container_item_link_body_under-favorite_number 12
-      .u_item-box_container_item
-        = link_to "#",class:".u_item-box_container_item_link" do
-          %figure.u_item-box_container_item_link-box
-            = image_tag "pict-reason-02.jpg", class: "u_item-box_container_item_link-box_image"
-          .u_item-box_container_item_link_body
-            %h3.u_item-box_container_item_link_body-name スマホと手のセット
-            .u_item-box_container_item_link_body_under
-              .u_item-box_container_item_link_body_under-price ￥99,999
-              .u_item-box_container_item_link_body_under-favorite
-                %i.far.fa-heart.u_item-box_container_item_link_body_under-favorite_icon
-                %span.u_item-box_container_item_link_body_under-favorite_number 12
-      .u_item-box_container_item
-        = link_to "#",class:".u_item-box_container_item_link" do
-          %figure.u_item-box_container_item_link-box
-            = image_tag "pict-reason-02.jpg", class: "u_item-box_container_item_link-box_image"
-          .u_item-box_container_item_link_body
-            %h3.u_item-box_container_item_link_body-name スマホと手のセット
-            .u_item-box_container_item_link_body_under
-              .u_item-box_container_item_link_body_under-price ￥99,999
-              .u_item-box_container_item_link_body_under-favorite
-                %i.far.fa-heart.u_item-box_container_item_link_body_under-favorite_icon
-                %span.u_item-box_container_item_link_body_under-favorite_number 12
+    
+  .t__pickup__new
+    -# 雛形として使用の可能性
+    -# .t__pickup__new--item
+    -#   .u_item-box_container_item
+    -#     = link_to "#",class:".u_item-box_container_item_link" do
+    -#       %figure.u_item-box_container_item_link-box
+    -#         = image_tag "pict-reason-02.jpg", class: "u_item-box_container_item_link-box_image"
+    -#       .u_item-box_container_item_link_body
+    -#         %h3.u_item-box_container_item_link_body-name スマホと手のセット
+    -#         .u_item-box_container_item_link_body_under
+    -#           .u_item-box_container_item_link_body_under-price ￥99,999
+    -#           .u_item-box_container_item_link_body_under-favorite
+    -#             %i.far.fa-heart.u_item-box_container_item_link_body_under-favorite_icon
+    -#             %span.u_item-box_container_item_link_body_under-favorite_number 12
+    -#   .u_item-box_container_item
+    -#     = link_to "#",class:".u_item-box_container_item_link" do
+    -#       %figure.u_item-box_container_item_link-box
+    -#         = image_tag "pict-reason-02.jpg", class: "u_item-box_container_item_link-box_image"
+    -#       .u_item-box_container_item_link_body
+    -#         %h3.u_item-box_container_item_link_body-name スマホと手のセット
+    -#         .u_item-box_container_item_link_body_under
+    -#           .u_item-box_container_item_link_body_under-price ￥99,999
+    -#           .u_item-box_container_item_link_body_under-favorite
+    -#             %i.far.fa-heart.u_item-box_container_item_link_body_under-favorite_icon
+    -#             %span.u_item-box_container_item_link_body_under-favorite_number 12
+    -#   .u_item-box_container_item
+    -#     = link_to "#",class:".u_item-box_container_item_link" do
+    -#       %figure.u_item-box_container_item_link-box
+    -#         = image_tag "pict-reason-02.jpg", class: "u_item-box_container_item_link-box_image"
+    -#       .u_item-box_container_item_link_body
+    -#         %h3.u_item-box_container_item_link_body-name スマホと手のセット
+    -#         .u_item-box_container_item_link_body_under
+    -#           .u_item-box_container_item_link_body_under-price ￥99,999
+    -#           .u_item-box_container_item_link_body_under-favorite
+    -#             %i.far.fa-heart.u_item-box_container_item_link_body_under-favorite_icon
+    -#             %span.u_item-box_container_item_link_body_under-favorite_number 12
 .t__bottom
   .t__bottom__innner
     %h2.t__bottom__innner__title だれでもかんたん、人生を変えるフリマアプリ
     %p.t__bottom__innner__text 今すぐ無料ダウンロード！
     .t__bottom__innner__icon
       .t__bottom__innner__icon-app
-        %a(id="aBtn" href="http://google.co.jp")
+        =link_to "http://google.co.jp", id: 'aBtn' do
           = image_tag 'apple-icon.png', alt: '', class: 'apple'
       .t__bottom__innner__icon-google
-        %a(id="gBtn" href="http://google.co.jp")
+        =link_to "http://google.co.jp", id: 'gBtn' do
           = image_tag 'google-play.png', alt: '', class: 'google'
 = render partial: 'layouts/footer', locals: { footer: @footer }
-- if user_signed_in?
-  %a(href="/items/new")
-    .sellBtn
-      %span.sellBtn__text 出品する
-      = image_tag 'icon_camera.png', alt: '', height: '', width: '', class: 'sellBtn__icon'
-- else
-  %a(href="/users/sign_in")
-    .sellBtn
-      %span.sellBtn__text ログインして出品する
-      = image_tag 'icon_camera.png', alt: '', height: '', width: '', class: 'sellBtn__icon'
+%a(href="/items/new")
+  .sellBtn
+    %span.sellBtn__text 出品する
+    = image_tag 'icon_camera.png', alt: '', height: '', width: '', class: 'sellBtn__icon'
