@@ -7,10 +7,11 @@ Rails.application.routes.draw do
     get 'addresses', to: 'users/registrations#new_address'
     post 'addresses', to: 'users/registrations#create_address'
   end
-  root 'posts#index'
+  root 'items#top'
 
   resources :users,     only: [:show, :index, :edit, :update]
   resources :items do
+    get 'top', to: 'items#top'
     resources :comments, only: :create
   end
   resources :addresses, only: [:edit, :update]

@@ -48,7 +48,10 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
+  end
 
+  def top
+    @items = Item.includes(:images).order('created_at DESC').limit(3)
   end
   
   private
