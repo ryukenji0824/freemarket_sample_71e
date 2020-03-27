@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def update
     @user.update(update_params)
     unless @user.update(update_params)
-      redirect_to edit_user_path(@user.id), notice: "出品できません。入力必須項目を確認してください"
+      redirect_to edit_user_path(@user.id), notice: "変更できません。ニックネームとパスワードは必須項目です"
     end
     sign_in(:user, @user)
   end
