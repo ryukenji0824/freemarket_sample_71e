@@ -189,18 +189,22 @@
           width: 400px;
           margin: 0 auto;
           &__user {
-            position: absolute;
-            top: 43px;
-            left: 117px;
             img {
-              width: 100%;
-              height: 100%;
-              border-radius: 50%;
+              width: 70%;
+              height: 70%;
+              border-radius: 70%;
               cursor: pointer;
+              position: absolute;
+              top: 33px;
+              left: 63px;
             }
-            .no-image {
+            .avatar_present_img {
               height: 150px;
-              width: 150px;
+              width: 160px;
+              border-radius: 70%;
+              position: absolute;
+              top: 43px;
+              left: 125px;
             }
             input {
               display: none;
