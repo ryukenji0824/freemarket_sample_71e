@@ -132,9 +132,15 @@
 
     %ur.d-links
       %li 
-        =link_to "<前の商品"
+        - if @item.next.present?
+          = link_to item_path(@item.next) do
+            <
+            = @item.next.name
       %li 
-        =link_to "後ろの商品>"
+        - if @item.previous.present?
+          = link_to item_path(@item.previous) do
+            = @item.previous.name
+            >
     .d-relatedItems
       =link_to "カテゴリをもっと見る"
       
