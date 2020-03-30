@@ -1,3 +1,0 @@
-class CategoryAncestry < ApplicationRecord
-  
-end
