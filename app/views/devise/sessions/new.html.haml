@@ -18,7 +18,10 @@
           Googleでログイン
       .log-in_main_panel_inner
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-          .log-in_main_panel_inner_form-group
-          .log-in_main_panel_inner_form-group
-          .log-in_main_panel_inner_form-group
+          .log-in_main_panel_inner_form-group_email
+            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" ,class: "log-in_main_panel_inner_form-group_email_form"
+          .log-in_main_panel_inner_form-group_password
+            = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "log-in_main_panel_inner_form-group_password_form"
+          .log-in_main_panel_inner_form-group_submit
+            = f.submit "ログイン", class:"log-in_main_panel_inner_form-group_submit_btn"
   .log-in_footer
