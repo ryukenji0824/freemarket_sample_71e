@@ -19,7 +19,6 @@ class UsersController < ApplicationController
     unless @user.update(update_params)
       redirect_to edit_user_path(@user.id), notice: "変更できません。ニックネームとパスワードは必須項目です"
     end
-    binding.pry
     sign_in(:user, @user)
   end
 
