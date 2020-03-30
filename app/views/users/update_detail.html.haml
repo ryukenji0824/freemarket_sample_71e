@@ -1,8 +1,28 @@
-= render partial: 'layouts/header', locals: { header: @header }
+.t__main
+  .t__head__bar
+    .t__head__bar__box
+      .t__head__bar__box-logo
+        %a(href="/")
+          = image_tag 'logo.png', alt: '', height: '40px', width: '140px', class: 'img-logo'
+      %input.t__head__bar__box-text-box{:name => "search", :placeholder => "キーワードから探す", :type => "search", :value => ""}/
+      .t__head__bar__box-text-box-btn(type="submit")
+        %a(href="/")
+          = image_tag 'icon-search 1.png', alt: '',height: '22px',width:'22px',type: 'submit', class: 't__head__bar__box-text-box-btn-icon'
+    .t__head__bar__search
+      .t__head__bar__search__box
+        %a(id="categoryBtn" href="/")
+          .t__head__bar__search__box-categoryカテゴリー
+        %a(id="brandBtn" href="/")
+          .t__head__bar__search__box-brandブランド
+      .t__head__bar__search__select
+        = link_to new_user_session_path,id: "logBtn" do
+          .t__head__bar__search__select-login ログイン
+        = link_to new_user_registration_path,id: "newBtn" do
+          .t__head__bar__search__select-login 新規会員登録
 .after-sign-up
   .after-sign-up_content
     .after-sign-up_content_box
       %h1.after-sign-up_content_box_message 変更が完了しました
       .after-sign-up_content_box_image
-      %p.after-sign-up_content_box_p 引き続きお買い物をお楽しみください
+      %p.after-sign-up_content_box_p お手数ですが、もう一度ログインをお願いします。
 = render partial: 'layouts/footer', locals: { footer: @footer }

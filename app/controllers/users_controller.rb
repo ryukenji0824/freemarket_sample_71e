@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     unless @user.update(update_params)
       redirect_to edit_user_path(@user.id), notice: "変更できません。ニックネームとパスワードは必須項目です"
     end
+    binding.pry
     sign_in(:user, @user)
   end
 
@@ -26,10 +27,9 @@ class UsersController < ApplicationController
   end
 
   def update_detail
-    binding.pry
     @user.update(update_detail_params)
     unless @user.update(update_detail_params)
-      redirect_to user_edit_detail_path(@user.id), notice: "変更できません。ニックネームとパスワードは必須項目です"
+      redirect_to user_edit_detail_path(@user.id), notice: "変更できません。メールアドレスとパスワードは必須項目です"
     end
     sign_in(:user, @user)
   end
