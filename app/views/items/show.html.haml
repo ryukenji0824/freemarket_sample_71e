@@ -76,7 +76,7 @@
               お気に入り 0
           %ul.d-optional
             %li.d-optionalBtn
-              %a{:href => "#"}
+              =link_to item_path(@item), method: :get, data: { confirm: '不適切な商品を報告しますか？' } do
                 =icon('fa','flag')
                 不適切な商品の通報
       .d-itemChangeBox
@@ -93,8 +93,8 @@
 
           -else
             %li
-              %button.d-itemChangeBox__btnList__buyBtn
-                = link_to item_purchase_index_path(@item.id) do
+              = link_to item_purchase_index_path(@item.id) do
+                %button.d-itemChangeBox__btnList__buyBtn
                   購入画面に進む
       .d-commentBox
         - if @comments
@@ -145,5 +145,4 @@
       =link_to "カテゴリをもっと見る"
       
 .d-footer
-
-
+  = render partial: 'layouts/footer', locals: { footer: @footer }
