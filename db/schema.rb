@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200327083457) do
+ActiveRecord::Schema.define(version: 20200330084908) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "family_name",      null: false
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 20200327083457) do
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name",       null: false
+    t.string   "ancestry"
   end
 
   create_table "category_ancestries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -74,13 +76,21 @@ ActiveRecord::Schema.define(version: 20200327083457) do
     t.index ["item_id"], name: "index_images_on_item_id", using: :btree
   end
 
+  create_table "item_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "item_id",     null: false
+    t.integer  "category_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_item_categories_on_category_id", using: :btree
+    t.index ["item_id"], name: "index_item_categories_on_item_id", using: :btree
+  end
+
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.string   "name",                        null: false
     t.text     "description",   limit: 65535, null: false
     t.integer  "price",                       null: false
     t.string   "size"
-    t.string   "condition",                   null: false
     t.string   "wait",                        null: false
     t.string   "postage",                     null: false
     t.integer  "category_id",                 null: false
@@ -89,6 +99,7 @@ ActiveRecord::Schema.define(version: 20200327083457) do
     t.integer  "buyer_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.integer  "condition_id"
     t.index ["name", "price"], name: "index_items_on_name_and_price", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end

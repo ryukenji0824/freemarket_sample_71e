@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_category, only: [:new, :create, :edit, :update]
   before_action :set_item, only: [:update, :edit, :destroy]
   before_action :move_to_root, except: [:index, :show, :top]
   def index
@@ -8,6 +9,14 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.new
+    
+    def get_category_children
+      @category_children = Category.find_by(id: "#{params[:parent_id]}", ancestry: nil).children
+    end
+  
+    def get_category_grandchildren
+      @category_grandchildren = Category.find("#{params[:child_id]}").children
+    end
   end
   
   def create
@@ -54,7 +63,7 @@ class ItemsController < ApplicationController
   
   private
   def item_params
-    params.require(:item).permit(:name, :description, :size, :brand_id, :price, :condition, :wait, :postage, :category_id, :prefecture_id, :buyer_id, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)  
+    params.require(:item).permit(:name, :description, :size, :brand_id, :price, :condition_id, :wait, :postage, :category_id, :prefecture_id, :buyer_id, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)  
   end
 
   def set_item
@@ -63,5 +72,12 @@ class ItemsController < ApplicationController
 
   def move_to_root
     redirect_to root_path unless user_signed_in?
+  end
+
+  def set_category
+    @category_parent_array = []
+      Category.where(ancestry: nil).each do |parent|
+        @category_parent_array << parent
+      end
   end
 end
