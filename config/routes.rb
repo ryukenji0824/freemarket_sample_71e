@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   end
   root 'items#top'
 
-  resources :users,     only: [:show, :index, :edit, :update]
+  resources :users,     only: [:show, :index, :edit, :update] do
+    get 'edit_detail', to: 'users#edit_detail'
+    patch 'update_detail', to: 'users#update_detail'
+  end
   resources :items do
     get 'top', to: 'items#top'
     resources :purchase, only: [:index] do
