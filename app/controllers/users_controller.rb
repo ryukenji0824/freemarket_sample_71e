@@ -26,6 +26,7 @@ class UsersController < ApplicationController
   end
 
   def update_detail
+    binding.pry
     @user.update(update_detail_params)
     unless @user.update(update_detail_params)
       redirect_to user_edit_detail_path(@user.id), notice: "変更できません。ニックネームとパスワードは必須項目です"

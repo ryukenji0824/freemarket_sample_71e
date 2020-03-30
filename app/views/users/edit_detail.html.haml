@@ -5,7 +5,7 @@
     .ue__wrapper__main-bar__contents
       %h2.ue__wrapper__main-bar__contents__title
         プロフィールの変更
-      = form_for @user do |f|
+      = form_for(@user, url: {controller: 'users', action: 'update_detail' }) do |f|
         .ue__wrapper__main-bar__contents__content
           = f.label "e-mail", class: "content-title"
           %br/
