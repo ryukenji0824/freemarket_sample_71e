@@ -38,4 +38,5 @@ Rails.application.routes.draw do
       post 'pay', to: 'cards#pay'
     end
   end  
+  resources :categories, only: :show
 end

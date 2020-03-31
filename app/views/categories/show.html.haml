@@ -1,0 +1,17 @@
+= render partial: 'layouts/header', locals: { header: @header }
+.e__middle
+  .e__middle__title
+    %h1
+      =@category.name
+      の商品一覧
+  .e__middle__container
+    = render @items
+  .e__middle__page
+    = paginate(@items)
+= render partial: 'layouts/footer', locals: { footer: @footer }
+%a(href="/items/new")
+  .sellBtn
+    %span.sellBtn__text 出品する
+    = image_tag 'icon_camera.png', alt: '', height: '', width: '', class: 'sellBtn__icon'
+          
+        
