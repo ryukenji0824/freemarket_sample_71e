@@ -90,7 +90,10 @@
             or
             %li
               = button_to "この商品を削除する", item_path(@item), method: :delete, data: {confirm: "削除しますか？"}
-
+          -elsif user_signed_in? == false
+            = link_to new_user_session_path do
+              %button.d-itemChangeBox__btnList__buyBtn
+                ログインして購入する
           -else
             %li
               = link_to item_purchase_index_path(@item.id) do
