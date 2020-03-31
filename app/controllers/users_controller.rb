@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  before_action :set_category
   before_action :set_user_params, only: [:show, :edit, :update]
   before_action :set_user_current, only: [:index, :edit_detail, :update_detail]
 
@@ -50,6 +50,13 @@ class UsersController < ApplicationController
 
   def update_detail_params
     params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+
+  def set_category
+    @category_parent_array = []
+      Category.where(ancestry: nil).each do |parent|
+        @category_parent_array << parent
+      end
   end
 
 

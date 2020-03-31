@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_category, only: [:index, :new, :create, :edit, :update, :top]
+  before_action :set_category, only: [:index, :new, :create, :edit, :update, :top, :show]
   before_action :set_item, only: [:update, :edit, :destroy]
   before_action :move_to_root, except: [:index, :show, :top]
   def index
