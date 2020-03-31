@@ -1,13 +1,21 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:update, :edit, :destroy]
-  before_action :move_to_root, except: [:index, :show]
+  before_action :move_to_root, except: [:index, :show, :top]
   def index
-    @items = Item.includes(:images).order('created_at DESC')
+    @items = Item.includes(:images).order('created_at DESC').page(params[:page]).per(5)
   end
   
   def new
     @item = Item.new
     @item.images.new
+    
+    def get_category_children
+      @category_children = Category.find_by(id: "#{params[:parent_id]}", ancestry: nil).children
+    end
+  
+    def get_category_grandchildren
+      @category_grandchildren = Category.find("#{params[:child_id]}").children
+    end
   end
   
   def create
@@ -46,12 +54,15 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
+  end
 
+  def top
+    @items = Item.includes(:images).order('created_at DESC').limit(3)
   end
   
   private
   def item_params
-    params.require(:item).permit(:name, :description, :size, :brand_id, :price, :condition, :wait, :postage, :category_id, :prefecture_id, :buyer_id, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)  
+    params.require(:item).permit(:name, :description, :size, :brand_id, :price, :condition_id, :wait, :postage, :category_id, :prefecture_id, :buyer_id, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)  
   end
 
   def set_item
@@ -62,5 +73,4 @@ class ItemsController < ApplicationController
     redirect_to root_path unless user_signed_in?
   end
 
-  
 end

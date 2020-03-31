@@ -1,28 +1,59 @@
-%h2
-  プロフィールの変更
-= form_for @user do |f|
-  .field
-    = f.label "ニックネーム"
-    %br/
-    = f.text_field :nickname, autofocus: true, autocomplete: "nickname"
-  .field
-    = f.label "自己紹介"
-    %br/
-    = f.text_area :introduction, autofocus: true, autocomplete: "introduction"
-  .field
-    = f.label "パスワード"
-    - if @minimum_password_length
-      %em
-        (7 characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label "パスワード（確認用）"
-    - if @minimum_password_length
-      %em
-        (7 characters minimum)
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "password_confirmation"
-  .actions
-    = f.submit "更新する"
-= link_to "戻る", :back
+= render partial: 'layouts/header', locals: { header: @header }
+.ue__wrapper
+  = render "side-bar"
+  .ue__wrapper__main-bar
+    .ue__wrapper__main-bar__contents
+      %h2.ue__wrapper__main-bar__contents__title
+        プロフィールの変更
+      = form_for @user do |f|
+        .ue__wrapper__main-bar__contents__content
+          .ue__wrapper__main-bar__contents__content__image
+            %label(for="user_user_image")
+              .ue__wrapper__main-bar__contents__content__image__user
+                %img#avatar_img_prev.hidden
+                - if @user.user_image.present?
+                  = image_tag @user.user_image.url, class: "avatar_present_img"
+                - else
+                  =image_tag "member_photo_noimage_thumb.png", class: "avatar_present_img"
+                = f.file_field :user_image
+                
+                
+                
+                
+        
+        .ue__wrapper__main-bar__contents__content
+          = f.label "ニックネーム", class: "content-title"
+          %br/
+          = f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "ニックネーム"
+        .ue__wrapper__main-bar__contents__content
+          = f.label "自己紹介", class: "content-title"
+          %br/
+          = f.text_area :introduction, autofocus: true, autocomplete: "introduction", placeholder: "例)こんにちは。着古した子供服をたくさん出品しています。女の子、sizeは100が多いです。よろしくお願いいたします。"
+        .ue__wrapper__main-bar__contents__content
+          = f.label "パスワード", class: "content-title"
+          - if @minimum_password_length
+            %em
+            (7 characters minimum)
+          %br/
+          = f.password_field :password, autocomplete: "new-password", placeholder: "半角英数字７字以上"
+        .ue__wrapper__main-bar__contents__content
+          = f.label "パスワード（確認用）", class: "content-title"
+          - if @minimum_password_length
+            %em
+              (7 characters minimum)
+          %br/
+          = f.password_field :password_confirmation, autocomplete: "password_confirmation", placeholder: "半角英数字７字以上"
+        .ue__wrapper__main-bar__contents__content
+          = f.submit "更新する", class: "update-btn"
+          = link_to "もどる", users_path(current_user), class: "back-btn"
+= render partial: 'layouts/footer', locals: { footer: @footer }
+- if user_signed_in?
+  %a(href="/items/new")
+    .sellBtn
+      %span.sellBtn__text 出品する
+      = image_tag 'icon_camera.png', alt: '', height: '', width: '', class: 'sellBtn__icon'
+- else
+  %a(href="/users/sign_in")
+    .sellBtn
+      %span.sellBtn__text ログインして出品する
+      = image_tag 'icon_camera.png', alt: '', height: '', width: '', class: 'sellBtn__icon'
