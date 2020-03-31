@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-  before_action :set_category, only: [:index, :new, :create, :edit, :update, :top]
   before_action :set_item, only: [:update, :edit, :destroy]
   before_action :move_to_root, except: [:index, :show, :top]
   def index
@@ -74,10 +73,4 @@ class ItemsController < ApplicationController
     redirect_to root_path unless user_signed_in?
   end
 
-  def set_category
-    @category_parent_array = []
-      Category.where(ancestry: nil).each do |parent|
-        @category_parent_array << parent
-      end
-  end
 end
