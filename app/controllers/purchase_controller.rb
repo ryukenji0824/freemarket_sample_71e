@@ -1,9 +1,9 @@
 class PurchaseController < ApplicationController
-
+  before_action :set_category
   require 'payjp'
   before_action :set_item, only: [:index, :pay]
   before_action :set_card, only: [:index, :pay]
-
+  
   def index
     @card = Card.where(user_id: current_user.id).first
     #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
@@ -40,6 +40,13 @@ class PurchaseController < ApplicationController
 
   def set_card
     @card = Card.where(user_id: current_user.id).first
+  end
+
+  def set_category
+    @category_parent_array = []
+      Category.where(ancestry: nil).each do |parent|
+        @category_parent_array << parent
+      end
   end
 
 end

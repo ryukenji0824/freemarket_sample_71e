@@ -1,7 +1,7 @@
 class CardsController < ApplicationController
   require "payjp"
   before_action :set_card, only: [:destroy, :show]
-
+  before_action :set_category
   def new
     card = Card.where(user_id: current_user.id)
     redirect_to action: "show" if card.exists?
@@ -45,5 +45,12 @@ class CardsController < ApplicationController
   private
   def set_card
     @card = Card.where(user_id: current_user.id).first
+  end
+
+  def set_category
+    @category_parent_array = []
+      Category.where(ancestry: nil).each do |parent|
+        @category_parent_array << parent
+      end
   end
 end

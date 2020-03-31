@@ -1,4 +1,5 @@
 class AddressesController < ApplicationController
+  before_action :set_category
   before_action :set_user_params, only: [:edit, :update]
   def edit
     @address = @user.address
@@ -20,5 +21,12 @@ class AddressesController < ApplicationController
 
   def set_user_params
     @user = User.find(params[:id])
+  end
+
+  def set_category
+    @category_parent_array = []
+      Category.where(ancestry: nil).each do |parent|
+        @category_parent_array << parent
+      end
   end
 end

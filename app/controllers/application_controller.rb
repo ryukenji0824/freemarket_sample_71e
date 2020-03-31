@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   before_action :set_category
 
   protect_from_forgery with: :exception
+
+  
   
 
   private
