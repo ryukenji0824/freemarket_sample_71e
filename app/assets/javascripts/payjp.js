@@ -1,7 +1,7 @@
 document.addEventListener(
   "DOMContentLoaded", e => {
     if (document.getElementById("token_submit") != null) { //token_submitというidがnullの場合、下記コードを実行しない
-      Payjp.setPublicKey("pk_test_c2d2c40337ac15bb4c7413ad"); //ここに公開鍵を直書き
+      Payjp.setPublicKey("pk_test_99b7ce96a2487fd8298d8d6d"); //ここに公開鍵を直書き
       let btn = document.getElementById("token_submit"); //IDがtoken_submitの場合に取得されます
       btn.addEventListener("click", e => { //ボタンが押されたときに作動します
         e.preventDefault(); //ボタンを一旦無効化します
@@ -20,7 +20,7 @@ document.addEventListener(
             $("#card_token").append(
               $('<input type="hidden" name="payjp-token">').val(response.id)
             ); //取得したトークンを送信できる状態にします
-            document.inputForm.submit();
+            $("#charge-form").get(0).submit();
             alert("登録が完了しました"); //確認用
           } else {
             alert("カード情報が正しくありません。"); //確認用
