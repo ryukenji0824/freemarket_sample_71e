@@ -44,8 +44,7 @@
               %tr
                 %th カテゴリー
                 %td.d-table--blue
-                  = link_to category_path(@item.category.id) do
-                    =@item.category.name
+                  =@item.category.name
               %tr
                 %th ブランド
                 %td 
@@ -133,20 +132,18 @@
             %br
             = f.submit "コメントする", class: "d-commentBtn"
         -else
+    .d-links
+      %ur
+        %li 
+          - if @item.next.present?
+            = link_to item_path(@item.next) do
+              <
+              = @item.next.name
+        %li 
+          - if @item.previous.present?
+            = link_to item_path(@item.previous) do
+              = @item.previous.name
+              >
 
-    %ur.d-links
-      %li 
-        - if @item.next.present?
-          = link_to item_path(@item.next) do
-            <
-            = @item.next.name
-      %li 
-        - if @item.previous.present?
-          = link_to item_path(@item.previous) do
-            = @item.previous.name
-            >
-    .d-relatedItems
-      =link_to "カテゴリをもっと見る"
-      
 .d-footer
   = render partial: 'layouts/footer', locals: { footer: @footer }

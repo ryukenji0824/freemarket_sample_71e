@@ -302,6 +302,7 @@
 .d-links {
   font-size: 16px;
   list-style: none;
+  height: 30px;
   li {
     display: inline;
     a{
@@ -311,14 +312,5 @@
   }
   li:last-child {
     float: right;
-  }
-}
-
-.d-relatedItems {
-  margin: 24px 0 8px 0;
-  font-size: 22px;
-  a {
-    text-decoration: none;
-    color: #3CCACE;
   }
 }
