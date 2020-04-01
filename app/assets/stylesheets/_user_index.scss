@@ -17,6 +17,12 @@
         width: 100%;
         padding: 10px;
         border-bottom: solid 1px #eee;
+        transition: all 0.3s ease 0s;
+      }
+      &__content:hover {
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+        transform: translateY(-0.1875em);
+        
       }
     }
   }
@@ -58,6 +64,8 @@
               height: 200px;
               margin: 0;
               position: relative;
+              transition: all 0.6s ease 0s;
+
               .ui-Image {
                 width: 200px;
                 height: 200px;
@@ -78,6 +86,9 @@
                 font-weight: bold;
                 font-size: 20px;
               }
+            }
+            &__box:hover {
+              transform: scale(1.1, 1.1);
             }
             &_body{
               padding: 16px;
@@ -153,6 +164,11 @@
         padding: 10px;
         border-bottom: solid 1px #eee;
       }
+      &__content:hover {
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+        transform: translateY(-0.1875em);
+        
+      }
     }
   }
   &__main-bar {
@@ -217,7 +233,11 @@
               cursor: pointer;
               background-position: center center;
               border: 3px solid #3ccAca;
+              transition: all 0.6s ease 0s;
 
+            }
+            img:hover {
+              transform: scale(1.1, 1.1);
             }
             input {
               display: none;
@@ -275,6 +295,11 @@
         width: 100%;
         padding: 10px;
         border-bottom: solid 1px #eee;
+      }
+      &__content:hover {
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+        transform: translateY(-0.1875em);
+        
       }
     }
   }
