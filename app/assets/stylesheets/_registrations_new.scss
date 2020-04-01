@@ -1,0 +1,137 @@
+@mixin square{
+  max-width: 340px;
+  margin: 0 auto;
+}
+@mixin fieldbox{
+  margin: 24px 0 0;
+}
+@mixin label{
+  font-weight: 600;
+}
+@mixin require{
+  background: red;
+}
+@mixin text-default{
+  width: 100%;
+  height: 50px;
+  margin: 8px 0 0;
+  padding: 10px 15px 10px;
+  font-size: 16px;
+}
+@mixin text-half{
+  width: calc(50% - 8px);
+}
+@mixin btn{
+  width: 100%;
+  height: 50px;
+  background: #3ccace;
+  margin: 24px 0 0;
+}
+.field_with_errors {
+  display: contents;
+}
+
+.r-single{
+  header{
+    height: 128px;
+    background: #f8f8f8;
+  }
+  
+  .r-single-main{
+    background-color: #f8f8f8;
+    .r-single-container{
+      width: 700px;
+      margin: 0 auto;
+      background: white;
+      h2{
+        padding: 32px;
+        font-size: 22px;
+        text-align: center;
+      }
+      .new_user{
+        padding: 26px 16px 40px;
+        .r-sigle-content{
+          @include square;
+          .field{
+            @include fieldbox;
+            label{
+              @include label;
+            }
+            .require{
+              @include require;
+            }
+            .input-default{
+              @include text-default;
+            }
+            .harf{
+              @include text-half;
+            }
+            &__birthday{
+              
+              &--box{
+                height: 50px;
+                width: 75px;
+                margin: 8px 0 0;
+                background: white;
+              }
+            }
+          }
+          .actions{
+            
+            .next-btn{
+              @include btn;
+            }
+          }
+        }
+      }
+      .new_address{
+        padding: 26px 16px 40px;
+        .r-single-content{
+          @include square;
+          .field{
+            @include fieldbox;
+            label{
+              @include label;
+            }
+            .require{
+              @include require;
+            }
+            .any{
+
+            }
+            .input-default{
+              @include text-default;
+            }
+            .harf{
+              @include text-half;
+            }
+            select{
+              width: 100%;
+              height: 50px;
+              background: white;
+            }
+          }
+          .actions{
+            
+            .next-btn{
+              @include btn;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+   
+   
+
+
