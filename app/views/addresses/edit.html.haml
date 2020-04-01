@@ -38,7 +38,7 @@
           = f.label "都道府県", class: "content-title"
           %span 必須
           %br/
-          = f.text_field :city, autofocus: true, autocomplete: "city", placeholder: "例）秋田県"
+          = f.collection_select :city, Prefecture.all, :id, :name, {}, {class: "select-box"}
         .ua__wrapper__main-bar__contents__content
           = f.label "市町村", class: "content-title"
           %span 必須
