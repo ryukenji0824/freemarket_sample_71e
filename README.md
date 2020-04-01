@@ -33,13 +33,14 @@ Things you may want to cover:
 |nickname|string|null: :false|
 |e-mail|string|null: ：false|
 |number|string|null: :false|
-|password|string|null: :false|
+|encrypted_password|string|null: :false|
 |password_confirmation|string|null: :false|
 |gender|integer|null: :false|
 |year|integer|null: :false|
 |month|integer|null: :false|
 |day|integer|null: :false|
 |introduction|text||
+|user_image|string||
 
 ## Association
 has_many :cards
@@ -73,7 +74,7 @@ add_index: [:nickname, :gender]
 belongs_to :user
 
 ## index
-add_index: :city
+add_index: [:city, :user_id]
 
 
 
@@ -81,11 +82,15 @@ add_index: :city
 ## Cardsテーブル
 |Column|Type|Options|
 |:------|:----|:-------|
-|card_token|string|null: false,|
 |user_id|integer|null: false, foreign_key: true|
+|customer_id|string|null: false|
+|card_id|string|null: false|
 
 ## Association
 belongs_to :user
+
+## index
+add_index: :user_id
 
 
 
@@ -95,7 +100,7 @@ belongs_to :user
 |:------|:----|:-------|
 |user_id|integer|null: false,foreign_key: true|
 |item_id|integer|null: false,foreign_key: true|
-|content|text|null: :false|
+|text|text|null: :false|
 
 ## Association
 belongs_to :user
@@ -155,13 +160,9 @@ belongs_to :item, optional: true
 ## Brandsテーブル
 |Column|Type|Options|
 |:------|:----|:-------|
-|name|string|null: false,|
 
 ## Association
 has_many :items
-
-## index
-add_index: :name
 
 
 
@@ -170,6 +171,7 @@ add_index: :name
 |Column|Type|Options|
 |:------|:----|:-------|
 |name|string|null: false|
+|ancestry|string||
 
 ## Association
 has_many :items

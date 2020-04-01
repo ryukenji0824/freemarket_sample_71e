@@ -31,9 +31,9 @@
           配送先（ご登録先住所への配送になります。）
         %p.address
           - if current_user.address.building.present?
-            #{current_user.address.city}#{current_user.address.local}#{current_user.address.block}#{current_user.address.building}
+            #{@city}#{current_user.address.local}#{current_user.address.block}#{current_user.address.building}
           - else
-            #{current_user.address.city}#{current_user.address.local}#{current_user.address.block}
+            #{@city}#{current_user.address.local}#{current_user.address.block}
       .c__container__confirm--row__submit
         = form_tag(action: :pay, method: :post) do
           %button.button 購入する

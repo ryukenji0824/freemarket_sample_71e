@@ -5,6 +5,7 @@ class PurchaseController < ApplicationController
   before_action :set_card, only: [:index, :pay]
   
   def index
+    @city = Prefecture.find(current_user.address.city).name
     @card = Card.where(user_id: current_user.id).first
     #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
     if @card.blank?

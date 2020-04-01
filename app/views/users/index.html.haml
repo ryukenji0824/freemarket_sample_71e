@@ -4,26 +4,26 @@
   .ui__wrapper__main-bar
     .ui__wrapper__main-bar__contents
       %h2.ui__wrapper__main-bar__contents__title 
-        #{@user.nickname} さんが出品した商品
+        #{@user.nickname}さんが出品した商品
       .ui__wrapper__main-bar__contents-flex
         - @items.each do |item|
-          .ui__wrapper__main-bar__contents-flex__content
-            = link_to item_path(item.id),class: "ui__wrapper__main-bar__contents__content__link" do
-              .ui__wrapper__main-bar__contents-flex__content__link__box
-                = image_tag item.images[0].src.url, class: "ui-Image"
-                -if item.buyer_id.present?
-                  .ui__itemBox__body--triangle
-                  .ui__itemBox__body__soldout
-                    SOLD
-              .u_item-box_container_item_link_body
-                %h3.u_item-box_container_item_link_body-name
-                  = item.name
-                .u_item-box_container_item_link_body_under
-                  .u_item-box_container_item_link_body_under-price
+          = link_to item_path(item.id),class: "ui__wrapper__main-bar__contents__content__link" do
+            .e__middle__container__border
+              .e__middle__container__border__content
+                .e__middle__container__border__content__image
+                  = image_tag item.images[0].src.url
+                  -if item.buyer_id.present?
+                    .e__middle__container__border__content__image--triangle
+                    .e__middle__container__border__content__image__soldout
+                      SOLD
+                .e__middle__container__border__content__info
+                  .e__middle__container__border__content__info__name
+                    = item.name
+                  .e__middle__container__border__content__info__price
+                    ¥
                     = item.price
-                  .u_item-box_container_item_link_body_under-favorite
-                    %i.far.fa-heart.u_item-box_container_item_link_body_under-favorite_icon
-                    %span.u_item-box_container_item_link_body_under-favorite_number 12
+                    =icon('far','heart') do
+                      %span 100
       
 = render partial: 'layouts/footer', locals: { footer: @footer }
 - if user_signed_in?
