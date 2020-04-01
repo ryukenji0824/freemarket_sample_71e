@@ -10,7 +10,7 @@
             = f.label "ニックネーム", class: "nickname"
             %span.require 必須
             %br/
-            = f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "input-default",placeholder: " 例 メル"
+            = f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "input-default",placeholder: " 例 フルル"
           .field
             = f.label "Eメールアドレス"
             %span.require 必須
@@ -37,15 +37,15 @@
               = f.label "お名前"
               %span.require 必須
               %br/
-            = f.text_field :family_name, autofocus: true, autocomplete: "family_name",class: "input-default harf",placeholder: "目留(全角大文字)"
-            = f.text_field :first_name, autofocus: true, autocomplete: "first_name",class: "input-default harf",placeholder: "太郎(全角大文字)"
+            = f.text_field :family_name, autofocus: true, autocomplete: "family_name",class: "input-default harf",placeholder: "付利魔(全角大字)"
+            = f.text_field :first_name, autofocus: true, autocomplete: "first_name",class: "input-default harf",placeholder: "太郎(全角大字)"
           .field
             %div
               = f.label "お名前カナ"
               %span.require 必須
               %br/
             .name-box
-              = f.text_field :family_name_kana, autofocus: true, autocomplete: "family_name_kana",class: "input-default harf",placeholder: "メル(全角カナ)"
+              = f.text_field :family_name_kana, autofocus: true, autocomplete: "family_name_kana",class: "input-default harf",placeholder: "フリマ(全角カナ)"
               = f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana",class: "input-default harf",placeholder: "タロウ(全角カナ)"
           .field
             = f.label "生年月日"
