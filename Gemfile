@@ -71,5 +71,4 @@ gem 'active_hash'
 gem 'ancestry'
 gem 'payjp'
 gem 'dotenv-rails'
-
 gem 'kaminari'
