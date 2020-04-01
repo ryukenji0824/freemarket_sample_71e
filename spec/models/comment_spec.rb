@@ -16,7 +16,9 @@ describe Comment do
       comment.valid?
       expect(comment.errors[:item_id]).to include("を入力してください")
     end
+    # factory_botを利用した記述
     it "is invalid without a text" do
+        # :textが予約語で使用できずエラー
       comment = build(:comment, text: "")
       user.valid?
       expect(comment.errors[:text]).to include("を入力してください")
