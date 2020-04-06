@@ -93,8 +93,15 @@
       = link_to 'もっと見る>',items_path
 .t__pickup
   .t__pickup__category
-    %h2 ピックアップブランド
-    %h3 アーカイバ
+    %h2 ピックアップカテゴリー
+    %h3 レディース
+  .t__pickup__index
+    .t__pickup__index__new
+      -@category.each do |category|
+        = render partial: "items/category", locals:{item: category}
+    .t__pickup__index__more
+
+   
 
 .t__bottom
   .t__bottom__innner
