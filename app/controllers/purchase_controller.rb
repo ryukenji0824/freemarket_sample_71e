@@ -1,8 +1,9 @@
 class PurchaseController < ApplicationController
   before_action :set_category
   require 'payjp'
-  before_action :set_item, only: [:index, :pay]
-  before_action :set_card, only: [:index, :pay]
+  before_action :set_item,       only: [:index, :pay]
+  before_action :set_card,       only: [:index, :pay]
+  before_action :no_direct_path, only: [:index, :pay]
   
   def index
     @city = Prefecture.find(current_user.address.city).name
@@ -21,6 +22,9 @@ class PurchaseController < ApplicationController
   end
 
   def pay
+    if @item.buyer_id.present?
+      redirect_to item_path(@item.id)
+    end
     @card = Card.where(user_id: current_user.id).first
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     Payjp::Charge.create(
@@ -48,6 +52,12 @@ class PurchaseController < ApplicationController
       Category.where(ancestry: nil).each do |parent|
         @category_parent_array << parent
       end
+  end
+
+  def no_direct_path
+    if  @item.user_id == current_user.id
+      redirect_to item_path(@item.id)
+    end
   end
 
 end
