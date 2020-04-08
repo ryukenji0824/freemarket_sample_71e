@@ -1,9 +1,11 @@
 class PurchaseController < ApplicationController
   before_action :set_category
   require 'payjp'
-  before_action :set_item, only: [:index, :pay]
-  before_action :set_card, only: [:index, :pay]
-  
+  before_action :set_item,       only: [:index, :pay]
+  before_action :set_card,       only: [:index, :pay]
+  before_action :no_direct_path, only: [:index, :pay]
+  before_action :buyer_id?,      only: [:index, :pay]
+
   def index
     @city = Prefecture.find(current_user.address.city).name
     @card = Card.where(user_id: current_user.id).first
@@ -48,6 +50,18 @@ class PurchaseController < ApplicationController
       Category.where(ancestry: nil).each do |parent|
         @category_parent_array << parent
       end
+  end
+
+  def no_direct_path
+    if  @item.user_id == current_user.id
+      redirect_to item_path(@item.id)
+    end
+  end
+
+  def buyer_id?
+    if @item.buyer_id.present?
+      redirect_to item_path(@item.id)
+    end
   end
 
 end
