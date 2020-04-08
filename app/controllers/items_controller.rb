@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:update, :edit, :destroy]
   before_action :move_to_root, except: [:index, :show, :top]
+  before_action :correct_user, only: [:edit, :update]
   def index
     @items = Item.includes(:images).order('created_at DESC').page(params[:page]).per(5)
   end
@@ -74,5 +75,9 @@ class ItemsController < ApplicationController
   def move_to_root
     redirect_to root_path unless user_signed_in?
   end
-
+  def correct_user
+    if @current_user.id !=  @item.user_id
+     redirect_to root_path
+    end
+  end
 end
