@@ -1,27 +1,46 @@
-# README
+## アプリケーション情報
+# アプリケーション概要
+* フリーマーケットのアプリケーションを作成しました。
+* 接続先情報
+* http://52.193.84.192/
+* ID/Pass
+* ID: teame
+* Pass: 1111
+# テスト用アカウント等
+* 購入者用
+* メールアドレス: buyer_user@gmail.com
+* パスワード: buyer_user
+* * 購入用カード情報
+* 番号：4242424242424242
+* 期限：12/25
+* セキュリティコード：123
+* * 出品者用
+* メールアドレス名: seller_user@gmail.com
+* パスワード: seller_user
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 開発状況
+# 開発環境
+* Ruby/Ruby on Rails/MySQL/Github/AWS/Visual Studio Code
+# 開発期間と平均作業時間
+* 開発期間：約3週間
+* 1日あたりの平均作業時間：約9時間
+# 開発体制
+* 人数：5名
+* アジャイル型開発（スクラム）
+* Trelloによるタスク管理
 
-Things you may want to cover:
+## 動作確認方法
+* Chromeの最新版を利用してアクセスしてください。
+* ただしデプロイ等で接続できないタイミングもございます。その際は少し時間をおいてから接続してください。
+* 接続先およびログイン情報については、上記の通りです。
+* 同時に複数の方がログインしている場合に、ログインできない可能性があります。
+# 出品方法は以下の手順で確認できます
+* テストアカウントでログイン→トップページから出品ボタン押下→商品情報入力→商品出品
+# 購入方法は以下の手順で確認できます
+* テストアカウントでログイン→トップページから商品検索→商品選択→商品購入
 
-* Ruby version
+* 確認後、ログアウト処理をお願いします。
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 ## usersテーブル
 |Columm|Type|Options|
