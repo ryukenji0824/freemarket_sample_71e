@@ -51,7 +51,7 @@ GEM
     bindex (0.8.1)
     builder (3.2.4)
     byebug (11.1.1)
-    capistrano (3.12.1)
+    capistrano (3.13.0)
       airbrussh (>= 1.0.0)
       i18n
       rake (>= 10.0.0)
@@ -59,7 +59,7 @@ GEM
     capistrano-bundler (1.6.0)
       capistrano (~> 3.1)
     capistrano-rails (1.4.0)
-      capistrano (~> 3.12.1)
+      capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
     capistrano-rbenv (2.1.6)
       capistrano (~> 3.1)
@@ -333,7 +333,7 @@ DEPENDENCIES
   byebug
   capistrano
   capistrano-bundler
-  capistrano-rails
+  capistrano-rails (~> 1.4.0)
   capistrano-rbenv
   capistrano3-unicorn
   carrierwave
@@ -348,7 +348,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   listen (~> 3.0.5)
-  mysql2 (>= 0.3.18, < 0.6.0)
+  mysql2
   payjp
   pry-rails
   puma (~> 3.0)
